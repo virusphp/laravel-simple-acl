@@ -17,7 +17,7 @@
                          <span class="invalid-feedback">
                            <strong>{{ $errors->first('email') }}</strong>
                         </span>
-                     @endif
+                    @endif
                   </div>
                   <div class="form-group">
                      <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" >
