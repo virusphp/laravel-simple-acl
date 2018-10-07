@@ -12,8 +12,8 @@
         <img src="{{ asset('img/cms-logo.png') }}" alt="..." class="img-circle profile_img">
       </div>
       <div class="profile_info">
-        <span>User ini</span>
-        <h2>PekalonganInfo</h2>
+        <span>Login Saat ini</span>
+        <h2>{{ Auth::user()->name }}</h2>
       </div>
     </div>
     <!-- /menu profile quick info -->
@@ -25,9 +25,9 @@
       <div class="menu_section">
         <h3>General</h3>
         <ul class="nav side-menu">
-          <li><a href="#"><i class="fa fa-home"></i> Home </a></li>
+          <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home </a></li>
           <li><a href="{{ route('categories.index') }}"><i class="fa fa-list"></i> Category </a></li>
-		 <!-- Blogs Menu -->
+		      <!-- Blogs Menu -->
           <li><a><i class="fa fa-building"></i> Blogs<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="#"><i class="fa fa-file-word-o"></i> Post All</a></li>

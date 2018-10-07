@@ -9,7 +9,7 @@
             <p class="text-center daiwabo">CMS PEKALONGAN INFO</p>
             <div class="account-wall">
                <img class="profile-img" src="{{ asset('img/cms-logo.png') }}">
-               <form class="form-signin" method="POST" action="{{ route('login') }}">
+               <form class="form-signin" method="POST" action="{{ route('post.login') }}">
                   {{ csrf_field() }}
                   <div class="form-group">
                      <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="Email" value="{{ old('username') }}"  autofocus>

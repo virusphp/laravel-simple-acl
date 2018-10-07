@@ -39,7 +39,7 @@
 		<!-- paginate -->
 			<div class="row">
 				<div class="col-sm-5 pull-left">
-					Paginate
+					{{ $categories->links() }}
 				</div>
 				<div class="clearfix"></div>
 

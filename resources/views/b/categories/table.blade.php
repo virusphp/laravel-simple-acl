@@ -9,13 +9,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		
+	@foreach($categories as $c)	
 		<tr>
-			<td>1</td>
-			<td>Wisata</td>
-			<td>Senin Selasa</td>
+			<td>{{ $loop->iteration }}</td>
+			<td>{{ $c->name }}</td>
+			<td>{{ $c->created_at }}</td>
 			<td>
-				{!! Form::open(['route' => ['categories.destroy',1], 'method' => 'DELETE']) !!}
+				{!! Form::open(['route' => ['categories.destroy',$c->id], 'method' => 'DELETE']) !!}
 					<a href="{{ route ('categories.edit',1) }}" class="btn btn-xs btn-warning">
 						<i class="fa fa-pencil"></i> 
 					</a>
@@ -24,9 +24,8 @@
 					</button>
 				{!! Form::close() !!}
 			</td>
-
 		</tr>
-		
+	@endforeach	
 	</tbody>
 	</table>
 </div>

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\b;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\b\BackendController;
+use App\Category;
 
-class CategoriesController extends Controller
+class CategoriesController extends BackendController
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
-        return view('b.categories.index');
+        $categories = Category::orderBy('name')->paginate($this->limit);
+        return view('b.categories.index', compact('categories'));
     }
 
     /**
@@ -25,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('b.categories.create');
     }
 
     /**
@@ -36,7 +37,8 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       Category::create($request->all());
+       return redirect()->route('categories.index')->with('message', 'Kategori berhasil di buat!'); 
     }
 
     /**
