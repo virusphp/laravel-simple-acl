@@ -5,12 +5,12 @@ namespace App\Http\Controllers\b;
 use Illuminate\Http\Request;
 use App\Http\Controllers\b\BackendController;
 use App\Http\Requests\CategoryRequest;
-use App\Service\ServiceCategory;
+use App\Repository\RepoCategory;
 use App\Category;
 
 class CategoriesController extends BackendController
 {
-    protected $service;
+    protected $repo;
     /**
      * Display a listing of the resource.
      *
@@ -18,12 +18,12 @@ class CategoriesController extends BackendController
      */
     public function __construct()
     {
-        $this->service = new ServiceCategory;
+        $this->repo = new RepoCategory;
     }
 
     public function index(Request $req)
     {
-        $categories = $this->service->serCategory($req);
+        $categories = $this->repo->getCategory($req);
         return view('b.categories.index', compact('categories'));
     }
 
