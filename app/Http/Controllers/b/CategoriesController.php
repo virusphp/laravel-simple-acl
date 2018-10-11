@@ -4,18 +4,28 @@ namespace App\Http\Controllers\b;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\b\BackendController;
+use App\Http\Requests\CategoryRequest;
+use App\Service\ServiceCategory;
 use App\Category;
 
 class CategoriesController extends BackendController
 {
+    protected $service;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct()
     {
-        $categories = Category::orderBy('name')->paginate($this->limit);
+        $this->service = new ServiceCategory;
+    }
+
+    public function index(Request $req)
+    {
+            
+        $categories = $this->service->serCategory($req);
+        // $categories = Category::terbaru()->paginate($this->limit);
         return view('b.categories.index', compact('categories'));
     }
 
@@ -35,10 +45,16 @@ class CategoriesController extends BackendController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
        Category::create($request->all());
-       return redirect()->route('categories.index')->with('message', 'Kategori berhasil di buat!'); 
+
+       $notif = [
+           'alert-type' => 'success',
+           'message' => 'Kategori berhasil di buat!'
+       ];
+
+       return redirect()->route('categories.index')->with($notif); 
     }
 
     /**
@@ -60,7 +76,8 @@ class CategoriesController extends BackendController
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('b.categories.edit', compact('category'));
     }
 
     /**
@@ -70,9 +87,18 @@ class CategoriesController extends BackendController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $data = $request->only('name', 'slug');
+        $category->update($data);
+
+        $notif = [
+            'alert-type' => 'success',
+            'message' => 'Kategori berhasil di update!'
+        ];
+
+        return redirect()->route('categories.index')->with($notif); 
     }
 
     /**
@@ -83,6 +109,14 @@ class CategoriesController extends BackendController
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+
+        $notif = [
+            'alert-type' => 'success',
+            'message' => 'Kategori berhasil di hapus!'
+        ];
+
+        return redirect()->route('categories.index')->with($notif);
     }
 }

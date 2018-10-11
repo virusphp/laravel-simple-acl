@@ -9,7 +9,7 @@
     <!-- menu profile quick info -->
     <div class="profile clearfix">
       <div class="profile_pic">
-        <img src="{{ asset('img/cms-logo.png') }}" alt="..." class="img-circle profile_img">
+        <img src="{{ asset('img/logo.jpg') }}" alt="..." class="img-circle profile_img">
       </div>
       <div class="profile_info">
         <span>Login Saat ini</span>

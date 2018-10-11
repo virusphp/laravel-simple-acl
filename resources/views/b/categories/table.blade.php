@@ -3,8 +3,8 @@
 	<thead>
 		<tr>
 			<th># No </th>
-			<th>Nama</th>
-			<th>Created at</th>
+			<th>Nama Kategori</th>
+			<th>Di Buat</th>
 			<th>Action</th>
 		</tr>
 	</thead>
@@ -13,10 +13,10 @@
 		<tr>
 			<td>{{ $loop->iteration }}</td>
 			<td>{{ $c->name }}</td>
-			<td>{{ $c->created_at }}</td>
+			<td>{{ tanggalIndo($c->created_at) }}</td>
 			<td>
 				{!! Form::open(['route' => ['categories.destroy',$c->id], 'method' => 'DELETE']) !!}
-					<a href="{{ route ('categories.edit',1) }}" class="btn btn-xs btn-warning">
+					<a href="{{ route ('categories.edit',$c->id) }}" class="btn btn-xs btn-warning">
 						<i class="fa fa-pencil"></i> 
 					</a>
 					<button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah kamu yakin ingin Menghapus data ini')" >

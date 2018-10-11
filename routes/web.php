@@ -22,3 +22,4 @@ $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/home', 'b\HomeController@index')->name('home');
 Route::resource('categories', 'b\CategoriesController');
+Route::get('categories/datatables', 'b\CategoriesCOntroller@search')->name('category.search');

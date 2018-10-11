@@ -8,7 +8,7 @@
             <hr>
             <p class="text-center daiwabo">CMS PEKALONGAN INFO</p>
             <div class="account-wall">
-               <img class="profile-img" src="{{ asset('img/cms-logo.png') }}">
+               <img class="profile-img" src="{{ asset('img/logo.jpg') }}">
                <form class="form-signin" method="POST" action="{{ route('post.login') }}">
                   {{ csrf_field() }}
                   <div class="form-group">

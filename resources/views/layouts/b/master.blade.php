@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="{{ asset('b/plugin/font-awesome/css/font-awesome.min.css') }}">
 
 	<link rel="stylesheet" href="{{ asset('b/plugin/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('b/plugin/toast/css/toast.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('b/css/custom.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('b/css/peri-tekno.css') }}">
 
   </head>
 
@@ -42,12 +42,12 @@
     <script src="{{ asset('b/js/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
 	<script src="{{ asset('b/js/bootstrap.min.js') }}"></script>
-    {{-- tinymce --}}
-    <script src="{{ asset('b/plugin/tinymce/tinymce.min.js') }}"></script>
+  {{-- tinymce --}}
+  <script src="{{ asset('b/plugin/tinymce/tinymce.min.js') }}"></script>
 
-    <script src="{{ asset('b/plugin/moment/min/moment.min.js') }}"></script>
-    <script src="{{ asset('b/plugin/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
-
+  <script src="{{ asset('b/plugin/moment/min/moment.min.js') }}"></script>
+  <script src="{{ asset('b/plugin/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+	<script src="{{ asset('b/plugin/toast/js/toast.min.js') }}"></script>
 	<!-- Custom Theme Scripts -->
 	<script src="{{ asset('b/js/custom.min.js') }}"></script>
 

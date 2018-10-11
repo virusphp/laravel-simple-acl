@@ -9,5 +9,8 @@ class Category extends Model
 {
     protected $fillable = ['name','slug']; 
 
-    
+    public function scopeTerbaru($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
 }
