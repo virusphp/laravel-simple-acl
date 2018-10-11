@@ -19,6 +19,8 @@ class RepoCategory
         ->terbaru()
         ->paginate($this->limit);
 
+        $category->appends($req->only('term'));
+
         return $category;
     }
 }

@@ -23,9 +23,7 @@ class CategoriesController extends BackendController
 
     public function index(Request $req)
     {
-            
         $categories = $this->service->serCategory($req);
-        // $categories = Category::terbaru()->paginate($this->limit);
         return view('b.categories.index', compact('categories'));
     }
 

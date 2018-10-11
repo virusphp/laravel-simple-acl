@@ -3,6 +3,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			{!! Form::text('name', null, ['class' => 'form-control col-md-7 col-xs-12']) !!}
 			{!! $errors->first('name', '<p class="help-block">:message</p>') !!}
+			{!! $errors->first('slug', '<p class="help-block">:message</p>') !!}
 		</div>
 	</div>
 	{{-- slug --}}
