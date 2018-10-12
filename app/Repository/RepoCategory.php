@@ -35,7 +35,7 @@ class RepoCategory
                 'slug' => $req->slug
             ];
 
-            if(!id) {
+            if(!$id) {
                 $category = Category::create($params);
             } else {
                 $category = Category::findOrFail($id);
@@ -54,5 +54,58 @@ class RepoCategory
             DB::rollback();
             return false;
         }  
+    }
+
+    public function delete($id)
+    {
+        DB::beginTransaction();
+        try
+        {
+            $delete = Category::destroy($id);
+            DB::commit();
+            if ($delete) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (\Exception $e) {
+            DB::rollback();
+            return false;
+        }
+    }
+
+    public function getPesan($nilai)
+    {
+        switch ($nilai) {
+            case 'create' :
+                $notif = [
+                    'alert-type' => 'success',
+                    'message' => 'Kategori berhasil di buat!'
+                ];
+                break;
+            case 'update' :
+                $notif = [
+                    'alert-type' => 'success',
+                    'message' => 'Kategori berhasil di update!'
+                ];
+                break;
+            case 'delete' :
+                $notif = [
+                    'alert-type' => 'success',
+                    'message' => 'Kategori berhasil di Hapus!'
+                ];
+                break;    
+            case 'error' :
+                $notif = [
+                    'alert-type' => 'success',
+                    'message' => 'Terjadi kesalahan silahkan ulangi!'
+                ];
+                break;
+            default : 
+                $notif = false;
+                break;
+        }
+
+        return $notif;
     }
 }

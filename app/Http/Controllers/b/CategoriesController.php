@@ -45,14 +45,13 @@ class CategoriesController extends BackendController
      */
     public function store(CategoryRequest $request)
     {
-       Category::create($request->all());
-
-       $notif = [
-           'alert-type' => 'success',
-           'message' => 'Kategori berhasil di buat!'
-       ];
-
-       return redirect()->route('categories.index')->with($notif); 
+       if ($this->repo->saveCategory($request)) {
+            $notif = $this->repo->getPesan('create'); 
+            return redirect()->route('categories.index')->with($notif); 
+       } else {
+            $notif = $this->repo->getPesan('error');
+            return redirect()->route('categories.create')->with($notif); 
+       }
     }
 
     /**
@@ -75,7 +74,11 @@ class CategoriesController extends BackendController
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('b.categories.edit', compact('category'));
+        if (!is_null($category)) {
+            return view('b.categories.edit', compact('category'));
+        } else {
+            return redirect()->route('categories.index');
+        }
     }
 
     /**
@@ -87,16 +90,13 @@ class CategoriesController extends BackendController
      */
     public function update(CategoryRequest $request, $id)
     {
-        $category = Category::findOrFail($id);
-        $data = $request->only('name', 'slug');
-        $category->update($data);
-
-        $notif = [
-            'alert-type' => 'success',
-            'message' => 'Kategori berhasil di update!'
-        ];
-
-        return redirect()->route('categories.index')->with($notif); 
+        if ($this->repo->saveCategory($request, $id)) {
+            $notif = $this->repo->getPesan('update'); 
+            return redirect()->route('categories.index')->with($notif); 
+       } else {
+            $notif = $this->repo->getPesan('error');
+            return redirect()->route('categories.edit', $id)->with($notif); 
+       } 
     }
 
     /**
@@ -107,13 +107,13 @@ class CategoriesController extends BackendController
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->delete();
-
-        $notif = [
-            'alert-type' => 'success',
-            'message' => 'Kategori berhasil di hapus!'
-        ];
+        if(!empty($id)) {
+            if($this->repo->delete($id)) {
+                $notif = $this->repo->getPesan('delete');
+            } else {
+                $notif = $this->repo->getPesan('error');
+            }
+        } 
 
         return redirect()->route('categories.index')->with($notif);
     }
