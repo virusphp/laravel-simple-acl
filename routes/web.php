@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 // Auth::routes();
-$this->get('pkl-admin', 'Auth\LoginController@showLoginForm')->name('show.login');
-$this->post('pkl-admin/post', 'Auth\LoginController@login')->name('post.login');
-$this->post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('pkl-admin', 'Auth\LoginController@showLoginForm')->name('show.login');
+Route::post('pkl-admin/post', 'Auth\LoginController@login')->name('post.login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/home', 'b\HomeController@index')->name('home');
 Route::resource('categories', 'b\CategoriesController');
