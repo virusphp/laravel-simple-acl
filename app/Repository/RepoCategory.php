@@ -4,7 +4,7 @@ namespace App\Repository;
 use App\Category;
 use DB;
 
-class RepoCategory 
+class RepoCategory
 {
     protected $limit = 5;
 
@@ -49,11 +49,11 @@ class RepoCategory
 
             DB::commit();
             return true;
-            
+
         } catch (\Exception $e) {
             DB::rollback();
             return false;
-        }  
+        }
     }
 
     public function delete($id)
@@ -94,14 +94,14 @@ class RepoCategory
                     'alert-type' => 'success',
                     'message' => 'Kategori berhasil di Hapus!'
                 ];
-                break;    
+                break;
             case 'error' :
                 $notif = [
                     'alert-type' => 'success',
                     'message' => 'Terjadi kesalahan silahkan ulangi!'
                 ];
                 break;
-            default : 
+            default :
                 $notif = false;
                 break;
         }

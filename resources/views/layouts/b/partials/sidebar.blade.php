@@ -30,8 +30,8 @@
 		      <!-- Blogs Menu -->
           <li><a><i class="fa fa-building"></i> Blogs<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="#"><i class="fa fa-file-word-o"></i> Post All</a></li>
-              <li><a href="#"><i class="fa fa-file-excel-o"></i> Blog posts</a></li>
+              <li><a href="{{ route('blogs.index') }}"><i class="fa fa-file-word-o"></i> Post All</a></li>
+              <li><a href="{{ route('blogs.create') }}"><i class="fa fa-file-excel-o"></i> Blog posts</a></li>
             </ul>
           </li>
 
