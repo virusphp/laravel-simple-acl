@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 class Post extends Model
 {
@@ -74,14 +75,19 @@ class Post extends Model
         return $imageThumbUrl;
     }
 
+    public function getBodyHtmlAttribute($value)
+    {
+        return $this->body ? Markdown::convertToHtml(e($this->body)) : NULL;
+    }
+
     public function getBodyPostAttribute()
     {
-        return substr($this->body, 0, 60);
+        return str_limit($this->body, 350);
     }
 
     public function getTitlePostAttribute()
     {
-        return substr($this->body, 0, 13);
+        return substr($this->title, 0, 13);
     }
 
     public function getPublishAtAttribute()

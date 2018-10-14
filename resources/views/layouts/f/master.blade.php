@@ -31,9 +31,13 @@
        @yield('content')
     </div>
   </div>
+
   <script src="{{ asset('f/js/jquery-3.3.1.min.js')}} "></script>
   <script src="{{ asset('f/js/popper.min.js')}} "></script>
   <script src="{{ asset('f/js/bootstrap.min.js')}} "></script>
   <script src="{{ asset('f/js/pekalonganinfo.js')}} "></script>
+  <script src="{{ asset('b/js/jquery.validate.min.js') }}"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  @stack('scripts')
 </body>
 </html>
