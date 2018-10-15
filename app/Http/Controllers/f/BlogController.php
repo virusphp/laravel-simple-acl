@@ -12,9 +12,9 @@ class BlogController extends FrontendController
 {
     public function index()
     {
-        $utama      = Post::with('user')->latest()->published()->paginate(1);
+        $utama      = Post::with('user')->latest()->published()->paginate(9);
         $blogutama  = Post::with('user')->published()->paginate(10);
-        // $random     = Post::with('user')->published()->paginate(10);
-        return view('f.index', compact('utama', 'blogutama'));
+        $random     = Post::with('user')->latest()->published()->paginate(10)->random(5);
+        return view('f.index', compact('utama', 'blogutama', 'random'));
     }
 }

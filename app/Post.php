@@ -82,12 +82,12 @@ class Post extends Model
 
     public function getBodyPostAttribute()
     {
-        return str_limit($this->body, 350);
+        return str_limit($this->body, 200);
     }
 
     public function getTitlePostAttribute()
     {
-        return substr($this->title, 0, 13);
+        return substr($this->title, 0, 100);
     }
 
     public function getPublishAtAttribute()
