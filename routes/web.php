@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'f\BlogController@index');
+Route::get('blog/{post}', 'f\BlogController@show')->name('show.post');
 
 // Auth::routes();
 Route::get('pkl-admin', 'Auth\LoginController@showLoginForm')->name('show.login');

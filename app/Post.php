@@ -30,7 +30,6 @@ class Post extends Model
 
     public function getDateAttribute($value)
     {
-        \Carbon\Carbon::setLocale('id');
         return is_null($this->published_at) ? '' : $this->published_at->diffForHumans();
     }
 
