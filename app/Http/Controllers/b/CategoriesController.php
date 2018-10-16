@@ -117,4 +117,9 @@ class CategoriesController extends BackendController
 
         return redirect()->route('categories.index')->with($notif);
     }
+
+    public function saveCategory(Request $request)
+	{
+		return Category::create($request->all());
+	}
 }
