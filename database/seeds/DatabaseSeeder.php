@@ -81,6 +81,7 @@ class DatabaseSeeder extends Seeder
                   'created_at' => $createDate,
                   'updated_at' => $createDate,
                   'published_at' => $i < 5 ? $publishedDate : (rand(0, 1) == 0 ? null : $publishedDate->addDays(4)),
+                  'view_count' => rand(1, 10),
               ];
           }
 

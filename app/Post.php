@@ -8,7 +8,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 
 class Post extends Model
 {
-    protected $fillable = ['user_id', 'category_id', 'title', 'body', 'slug', 'image', 'published_at'];
+    protected $fillable = ['user_id', 'category_id', 'title', 'body', 'slug', 'image', 'published_at', 'view_count'];
     protected $dates = ['published_at'];
 
     public function user()
@@ -37,6 +37,11 @@ class Post extends Model
     {
         return $query->where("published_at", "<=", Carbon::now());
     }
+
+    public function scopePopuler($query)
+	{
+		return $query->orderBy('view_count', 'desc');
+	}
 
     public function publicationLabel()
     {

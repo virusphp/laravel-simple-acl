@@ -1,5 +1,6 @@
 <div class="p-3 ">
-          <h5 class="font-italic ">FOLLOW US</h5>
+          <h5 class="font-bold ">SOSIAL MEDIA KAMI</h5>
+          <hr>
           <ol class="list-unstyled ">
             <li>
               <a href="# ">GitHub</a>

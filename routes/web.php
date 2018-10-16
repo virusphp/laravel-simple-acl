@@ -11,14 +11,19 @@
 |
 */
 
-Route::get('/', 'f\BlogController@index');
-Route::get('blog/{post}', 'f\BlogController@show')->name('show.post');
-
 // Auth::routes();
 Route::get('pkl-admin', 'Auth\LoginController@showLoginForm')->name('show.login');
 Route::post('pkl-admin/post', 'Auth\LoginController@login')->name('post.login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
+//frontend
+Route::group(['namespace' => 'f'], function () {
+    Route::get('/', 'BlogController@index');
+    Route::get('blog/{post}', 'BlogController@show')->name('show.post');
+    Route::get('categori/{category}', 'BlogController@category')->name('category.post');
+});
+
+//Backend
 Route::group(['namespace' => 'b', 'prefix' => 'b'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('categories', 'CategoriesController');

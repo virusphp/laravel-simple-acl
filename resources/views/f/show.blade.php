@@ -25,7 +25,6 @@
     <aside class="col-md-4 blog-sidebar">
       @include('f.widgets.terkini')
       @include('f.widgets.populer')
-      @include('f.widgets.categori')
       @include('f.widgets.followus')
     </aside>
   </div>
