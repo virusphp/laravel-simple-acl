@@ -13,12 +13,12 @@
 				</ul>
 			</div>
 
-			@include('b.categories.partials.search')	
+			@include('b.categories.partials.search')
 
 		</div>
 
     <div class="clearfix"></div>
-    
+
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<p><a href="{{ route('categories.create') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> </a></p>
 
@@ -30,7 +30,7 @@
 		<!-- paginate -->
 			<div class="row">
 				<div class="col-sm-5 pull-left">
-				{!! $categories->links() !!}	
+				{!! $categories->links() !!}
 				</div>
 				<div class="clearfix"></div>
 
@@ -39,11 +39,11 @@
 				</div>
 			</div>
 		  </div>
-		
+
 		</div>
 	</div>
 
-  </div>	
+  </div>
 </div>
 @endsection
 @push('scripts')
@@ -67,6 +67,6 @@
 				break;
     }
 	@endif
-	
+
 </script>
 @endpush

@@ -9,6 +9,7 @@ $(document).ready(function() {
     $(".header-logo").fadeIn("slow");
     $(".btn-close").hide();
   });
+
 });
 $(function() {
   var header = $(".nav-menu");
@@ -49,3 +50,4 @@ $(function() {
     }
   });
 });
+

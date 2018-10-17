@@ -93,6 +93,11 @@ body {
   color: white;
 }
 
+.fa-whatsapp {
+    background: #34bf49;
+    color: white;
+  }
+
 .img-logo {
   width: 50%;
   height: auto%;
@@ -466,4 +471,9 @@ background: #707070;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 
+}.blog-post-body img{
+    width:100%;
+    height:auto;
+    background-repeat:no-repeat;
+    background-size:cover;
 }

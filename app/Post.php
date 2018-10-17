@@ -87,7 +87,7 @@ class Post extends Model
 
     public function getBodyPostAttribute()
     {
-        return str_limit($this->body, 200);
+        return str_limit($this->body, 300);
     }
 
     public function getTitlePostAttribute()

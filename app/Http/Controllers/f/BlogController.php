@@ -12,7 +12,7 @@ class BlogController extends FrontendController
 {
     public function index()
     {
-        $sliderblog  = Post::with('user')->latest()->populer()->paginate(9);
+        $sliderblog  = Post::with('user')->latest()->populer()->limit(9);
         $bloglatest  = Post::with('user')->published()->paginate(10);
         return view('f.index', compact('sliderblog', 'bloglatest'));
     }
