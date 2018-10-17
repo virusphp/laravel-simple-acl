@@ -73,4 +73,14 @@ class User extends Authenticatable
 
         return $this->roles()->detach($role);
     } 
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'user_id');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

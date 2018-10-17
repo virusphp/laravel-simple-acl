@@ -15,7 +15,7 @@
         <div class="blog-post">
           <h5 class="blog-post-title ">{{ $post->title }}</h5>
           <p class="blog-post-meta ">{{ tanggalIndo($post->published_at) }} by
-            <a href="# ">{{ $post->user->name }}</a>
+            <a href="{{ route('author',$post->user->slug) }}">{{ $post->user->name }}</a>
           </p>
           <hr>
           {!! $post->body !!}
@@ -25,7 +25,7 @@
     <aside class="col-md-4 blog-sidebar">
       @include('f.widgets.terkini')
       @include('f.widgets.populer')
-      @include('f.widgets.categori')
+      @include('f.widgets.category')
       @include('f.widgets.followus')
     </aside>
   </div>
