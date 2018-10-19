@@ -94,6 +94,17 @@ class PostController extends BackendController
         return redirect('route'('blogs.index'));
     }
 
+    public function publish($id)
+    {
+        $publish = Post::find($id);
+        $data = date('Y-m-d H:i:s');
+        $publish->update([
+            'published_at' => $data,
+        ]);
+        return redirect('route'('blogs.index'));
+
+    }
+
     public function deleteImage($filename)
     {
         $path = public_path() . DIRECTORY_SEPARATOR . 'b/images/blogs'

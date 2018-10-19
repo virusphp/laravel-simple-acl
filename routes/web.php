@@ -28,6 +28,7 @@ Route::group(['namespace' => 'b', 'prefix' => 'b'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('categories', 'CategoriesController');
     Route::resource('blogs', 'PostController');
+    Route::get('/blogs/publish/{id}', 'PostController@publish')->name('blogs.publish');
     Route::get('categories/datatables', 'CategoriesCOntroller@search')->name('category.search');
     Route::post('categories/save', 'CategoriesController@saveCategory')->name('categories.saveCategory');
 });

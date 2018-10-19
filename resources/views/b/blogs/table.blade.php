@@ -23,10 +23,13 @@
 			</td>
 			<td>
 				{!! Form::open(['route' => ['blogs.destroy', $post->id], 'method' => 'DELETE']) !!}
-				<a href="{{ route ('blogs.edit',$post->id) }}" class="btn btn-warning btn-xs">
+				<a href="{{ route ('blogs.publish',$post->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Publish">
+					<i class="fa fa-upload"></i>
+                </a>
+                <a href="{{ route ('blogs.edit',$post->id) }}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
 					<i class="fa fa-pencil"></i>
 				</a>
-				<button type="submit"  class="btn btn-danger btn-xs" onclick="return confirm('Apakah kamu yakin ingin Menghapus data ini')" >
+				<button type="submit"  class="btn btn-danger btn-xs" onclick="return confirm('Apakah kamu yakin ingin Menghapus data ini')" data-toggle="tooltip" data-placement="top" title="Hapus">
 					<i class="fa fa-trash-o"></i>
 				</button>
 				{!! Form::close() !!}
