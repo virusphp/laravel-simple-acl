@@ -152,7 +152,7 @@ return [
          */
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-
+        
         /*
          * Application Service Providers...
          */
@@ -162,6 +162,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\MenuServiceProvider::class,
+        
+        App\Providers\CategoryServiceProvider::class,
 
     ],
 

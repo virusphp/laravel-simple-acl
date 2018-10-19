@@ -10,6 +10,7 @@
 
         slugInput.val(theSlug);
     });
+
     tinymce.init({
         selector     : "textarea",
         thema        : "inlite",
@@ -32,6 +33,7 @@
 	$('#browser_file').on('click', function(e) {
 		$('#image').click();
 	});
+	
 	$('#image').on('change', function(e) {
 		var file = this;
 		if (file.files[0])

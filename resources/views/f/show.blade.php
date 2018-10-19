@@ -64,8 +64,7 @@
             @include('f.widgets.populer')
             @include('f.widgets.followus')
         </aside>
-        </div>
-    </main>
-    </div>
-    @include('f.iklans.iklanwebkanan')
-    @endsection
+  </div>
+</main>
+</div>
+

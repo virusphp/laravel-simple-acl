@@ -48,41 +48,46 @@
     <div class="col-md-8">
       <h3 class="pb-3 mb-4 font-italic text-center border-bottom ">
          CONTENT PEKALONGAN INFO
-        </h4>
+      </h3>
+      @if(!$bloglatest->count())
+        <div class="alert alert-info">
+          <p>Tidak ada artikel</p> 
+        </div>
+      @else
         @foreach($bloglatest as $bl)
         <div class="row py-4">
-                <div class="col-md-12 card border bg-white">
-                  <article>
-                    <div class="row">
-                      <div class="col-sm-6 col-md-4">
-                        <figure class="py-2">
-                          <img src="{{ $bl->ImageThumbUrl }}" class="img-post-right img-fluid">
-                        </figure>
-                      </div>
-                      <div class="col-sm-6 col-md-8">
-                        <h5 class="py-1">{{ $bl->title }}</h5>
-                        <p>{!!  $bl->BodyPost !!}</p>
-                        <hr>
-                        <section>
-                          <span class="badge badge-primary">
+          <div class="col-md-12 card border bg-white">
+            <article>
+              <div class="row">
+                <div class="col-sm-6 col-md-4">
+                  <figure class="py-2">
+                    <img src="{{ $bl->ImageThumbUrl }}" class="img-post-right img-fluid" alt="{{ $bl->slug }}">
+                  </figure>
+                </div>
+                <div class="col-sm-6 col-md-8">
+                  <h5 class="py-1">{{ $bl->TitlePost }}</h5>
+                  {!! $bl->BodyPost !!}
+                  <hr>
+                  <section>
+                    <span class="badge badge-primary">
                           <i class="fa fa-user"></i> {{ $bl->user->name }}
                           </span>
-                          <span class="badge badge-primary">
+                    <span class="badge badge-primary">
                           <i class="fa fa-calendar"></i> {{ $bl->Date }}
                           </span>
-                          <a href="javascript:void(0)" class="float-right mb-1">
-                            <button type="submit" class="btn-cont">Continue reading
-                              <i class="fas fa-angle-double-right animated fadeInLeft infinite"></i>
-                            </button>
-                          </a>
-                        </section>
-                      </div>
-                    </div>
-                  </article>
+                    <a href="javascript:void(0)" class="float-right mb-1">
+                      <button type="submit" class="btn-cont">Continue reading
+                        <i class="fas fa-angle-double-right animated fadeInLeft infinite"></i>
+                      </button>
+                    </a>
+                  </section>
                 </div>
+              </div>
+            </article>
+          </div>
         </div>
         @endforeach
-
+      @endif
       <!-- /.blog-post -->
       <nav class="blog-pagination py-3">
         <a class="btn btn-outline-primary " href="# ">Older</a>
@@ -93,7 +98,7 @@
     <aside class="col-md-4 blog-sidebar">
       @include('f.widgets.terkini')
       @include('f.widgets.populer')
-      {{--  @include('f.widgets.categori')  --}}
+      @include('f.widgets.category')
       @include('f.widgets.followus')
     </aside>
   </div>

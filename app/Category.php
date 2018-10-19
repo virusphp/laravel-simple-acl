@@ -13,8 +13,14 @@ class Category extends Model
     {
         return $query->orderBy('created_at', 'desc');
     }
+
     public function posts()
     {
-        return $this->hasMany(Post::class, 'category_id');
+        return $this->hasMany(Post::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }
