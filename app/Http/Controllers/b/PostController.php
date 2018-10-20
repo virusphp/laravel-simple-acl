@@ -13,6 +13,7 @@ use Intervention\Image\Facades\Image;
 use File;
 use Session;
 
+
 class PostController extends BackendController
 {
     protected $uploadPath;
@@ -23,10 +24,15 @@ class PostController extends BackendController
         $this->uploadPath = config('cms.image.directory');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with('user')->latest()->paginate(10);
-        $postCount = Post::count();
+        if(is_Null($request->filter)){
+            $posts = Post::with('user')->latest()->paginate(10);
+            $postCount = Post::count();
+        }else{
+            $posts = $this->filterPost($request);
+            $postCount = Post::count();
+        }
         return view('b.blogs.index', compact('posts', 'postCount'));
     }
 
@@ -61,7 +67,7 @@ class PostController extends BackendController
 
     public function update(Request $request, $id)
     {
-    $post = Post::find($id);
+      $post = Post::find($id);
 	  $oldImage = $post->image;
       $data = $this->handleRequest($request);
 
@@ -142,5 +148,18 @@ class PostController extends BackendController
 		}
 
         return $data;
+    }
+
+    public function filterPost($request)
+    {
+        if ($request->filter == 'publish') {
+            $posts  = Post::with('user')->published()->paginate(10);
+        } elseif($request->filter == 'schedule') {
+            $posts  = Post::with('user')->schedule()->paginate(10);
+        }else{
+            $posts  = Post::with('user')->draft()->paginate(10);
+        }
+
+        return $posts;
     }
 }

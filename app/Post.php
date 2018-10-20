@@ -38,6 +38,16 @@ class Post extends Model
         return $query->where("published_at", "<=", Carbon::now());
     }
 
+    public function scopeSchedule($query)
+    {
+        return $query->where("published_at", ">=", Carbon::now());
+    }
+
+    public function scopeDraft($query)
+    {
+        return $query->whereNull("published_at");
+    }
+
     public function scopePopuler($query)
 	{
 		return $query->orderBy('view_count', 'desc');

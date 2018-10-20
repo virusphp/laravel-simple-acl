@@ -18,7 +18,7 @@
 			<td>{{ $post->user->name }}</td>
 			<td>{{ $post->category->name }}</td>
 			<td>
-				<abbr title="{{ $post->dateFormatted(true) }}">{{ $post->dateFormatted() }}</abbr>
+				{{ tanggalIndo($post->published_at) }}
 				{!! $post->publicationLabel() !!}
 			</td>
 			<td>

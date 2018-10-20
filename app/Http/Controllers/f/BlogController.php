@@ -13,7 +13,6 @@ class BlogController extends FrontendController
     public function index()
     {
         $sliderblog  = Post::with('user')->latest()->published()->paginate(9);
-        // dd($sliderblog);
         $bloglatest  = Post::with('user')->published()->paginate(10);
         return view('f.index', compact('sliderblog', 'bloglatest'));
     }
@@ -27,7 +26,7 @@ class BlogController extends FrontendController
     public function category(Category $category)
     {
         $sliderblog  = Post::with('user')->latest()->published()->paginate(9);
-        
+
         $bloglatest = $category->posts()
                                ->with('user')
                                ->published()
@@ -39,7 +38,7 @@ class BlogController extends FrontendController
     public function author(User $author)
     {
         $sliderblog  = Post::with('user')->latest()->published()->paginate(9);
-        
+
         $bloglatest = $author->posts()
                                ->with('category')
                                ->published()

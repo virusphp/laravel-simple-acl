@@ -1,5 +1,5 @@
 @extends('layouts.f.master')
-@section('title', '"-"')
+@section('title', '-')
 @push('css')
 @endpush
 @section('iklanwebkiri')
@@ -51,7 +51,7 @@
       </h3>
       @if(!$bloglatest->count())
         <div class="alert alert-info">
-          <p>Tidak ada artikel</p> 
+          <p>Tidak ada artikel</p>
         </div>
       @else
         @foreach($bloglatest as $bl)

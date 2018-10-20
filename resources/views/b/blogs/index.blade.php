@@ -23,7 +23,13 @@
             </div>
             <div class="clearfix"></div>
             <div class="col-md-12 col-sm-12 col-xs-12">
-				<p><a href="{{ route('blogs.create') }}"><button class="btn btn-primary btn-sm">Tambah</button></a></p>
+                <p>
+                    <a href="{{ route('blogs.create') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button></a>
+                    <a href="{{ route('blogs.filter', 'filter=publish') }}"><button class="btn btn-success btn-sm pull-right">Publish</button></a>
+                    <a href="{{ route('blogs.filter', 'filter=schedule') }}"><button class="btn btn-primary btn-sm pull-right">Schedule</button></a>
+                    <a href="{{ route('blogs.filter', 'filter=draft') }}"><button class="btn btn-warning btn-sm pull-right">Draft</button></a>
+                </p>
+
                 <div class="x_panel">
 					@if (session('flash_notification.message'))
 					<div class="alert alert-{{ session('flash_notification.level') }}">
