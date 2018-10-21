@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
 use File;
 use Session;
-
+use DB;
 
 class PostController extends BackendController
 {
@@ -99,6 +99,26 @@ class PostController extends BackendController
         ]);
         return redirect('route'('blogs.index'));
     }
+
+    public function tongSampah(){
+        $posts = Post::onlyTrashed()->paginate(10);
+        $postCount = count($posts);
+        return view('b.blogs.tongsampah', compact('posts', 'postCount'));
+    }
+
+    public function restore($id)
+	{
+        $post = Post::onlyTrashed()->findOrFail($id);
+		$post->restore();
+		return redirect('route'('blogs.index'));
+    }
+
+    public function forceDestroy($id)
+	{
+		$post = Post::withTrashed()->findOrFail($id);
+		$post->forceDelete();
+        return redirect('route'('blogs.index'));
+	}
 
     public function publish($id)
     {

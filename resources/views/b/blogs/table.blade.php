@@ -29,9 +29,12 @@
                 <a href="{{ route ('blogs.edit',$post->id) }}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
 					<i class="fa fa-pencil"></i>
 				</a>
-				<button type="submit"  class="btn btn-danger btn-xs" onclick="return confirm('Apakah kamu yakin ingin Menghapus data ini')" data-toggle="tooltip" data-placement="top" title="Hapus">
+				<button type="submit"  class="btn btn-danger btn-xs" onclick="return confirm('Apakah kamu yakin ingin Hapus Ke tong Sampah data ini')" data-toggle="tooltip" data-placement="top" title="Tong Sampah">
 					<i class="fa fa-trash-o"></i>
-				</button>
+                </button>
+                <a href="{{ route ('blogs.forceDestroy',$post->id) }}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus Permanent">
+					<i class="fa fa-eraser"></i>
+				</a>
 				{!! Form::close() !!}
 			</td>
 		</tr>

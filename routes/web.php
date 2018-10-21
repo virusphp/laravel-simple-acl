@@ -28,6 +28,9 @@ Route::group(['namespace' => 'f'], function () {
 //Backend
 Route::group(['middleware' => ['auth'], 'namespace' => 'b', 'prefix' => 'b'], function () {
     Route::get('home', 'HomeController@index')->name('home');
+    Route::get('blogs/tong-sampah', 'PostController@tongSampah')->name('blogs.sampah');
+    Route::get('blogs/restore/{id}', 'PostController@restore')->name('blogs.restore');
+    Route::get('blogs/forceDestroy/{forceDestroy}', 'PostController@forceDestroy')->name('blogs.forceDestroy');
     Route::resource('categories', 'CategoriesController');
     Route::resource('blogs', 'PostController');
     Route::get('blogs?{filter}', 'PostController@index')->name('blogs.filter');

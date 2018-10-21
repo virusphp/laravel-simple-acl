@@ -34,7 +34,7 @@
               <li><a href="{{ route('blogs.create') }}"><i class="fa fa-plus"></i> Blog posts</a></li>
             </ul>
           </li>
-
+          <li><a href="{{ route('blogs.sampah') }}"><i class="fa fa-trash"></i> Tong Sampah </a></li>
           <!-- End Maintenance -->
           <li><a><i class="fa fa-group"></i> Management User <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
