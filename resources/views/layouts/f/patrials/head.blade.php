@@ -22,7 +22,7 @@
         </a>
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#"><img src="{{ asset('f/image/logo1.png') }}" class="img-logo" alt="" srcset=""></a>
+        <a class="blog-header-logo text-dark" href="#"><img src="{{ asset('f/image/web-logo.png') }}" class="img-logo" alt="" srcset=""></a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="btn btn-sm btn-outline-primary btn-search" href="#"><i class="fa fa-search"></i></a>

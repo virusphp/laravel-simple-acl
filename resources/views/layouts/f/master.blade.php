@@ -10,7 +10,7 @@
   <meta name="twitter:site" content="@pekalonganinfo" />
   <meta name="twitter:site:id" content="@pekalonganinfo" />
   <meta name="twitter:creator" content="@pekalonganinfo" />
-  <link rel="icon" href="../../../../favicon.ico">
+  <link rel="icon" href="{{ asset('img/favicon.png') }}">
   <title>pekalonganinfo - @yield('title')</title>
   <link href="{{ asset('f/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">

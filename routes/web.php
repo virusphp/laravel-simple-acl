@@ -21,17 +21,17 @@ Route::group(['namespace' => 'f'], function () {
     Route::get('/', 'BlogController@index');
     Route::get('blog/{post}', 'BlogController@show')->name('show.post');
     Route::get('categori/{category}', 'BlogController@category')->name('category');
-    Route::get('author/{author}', 'f\BlogController@author')->name('author');
+    Route::get('author/{author}', 'BlogController@author')->name('author');
 
 });
 
 //Backend
-Route::group(['namespace' => 'b', 'prefix' => 'b'], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth'], 'namespace' => 'b', 'prefix' => 'b'], function () {
+    Route::get('home', 'HomeController@index')->name('home');
     Route::resource('categories', 'CategoriesController');
     Route::resource('blogs', 'PostController');
     Route::get('blogs?{filter}', 'PostController@index')->name('blogs.filter');
-    Route::get('/blogs/publish/{id}', 'PostController@publish')->name('blogs.publish');
+    Route::get('blogs/publish/{id}', 'PostController@publish')->name('blogs.publish');
     Route::get('categories/datatables', 'CategoriesCOntroller@search')->name('category.search');
     Route::post('categories/save', 'CategoriesController@saveCategory')->name('categories.saveCategory');
 });

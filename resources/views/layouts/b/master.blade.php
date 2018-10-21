@@ -5,8 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- <title>{{ config('app.name', 'PEKALONGAN INFO') }}</title> -->
-    <title>Pekalongan Info</title>
+    <title>{{ config('app.name', 'Pekalongan Info | Dashboard') }}</title>
+    <link rel="icon" href="{{ asset('img/favicon.png') }}">
 
     <!-- Bootstrap -->
     <link href="{{ asset('b/css/bootstrap.min.css') }}" rel="stylesheet">
