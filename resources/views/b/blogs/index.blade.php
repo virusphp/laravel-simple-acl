@@ -6,8 +6,9 @@
             <div class="page-title">
 				<div class="title_left">
 					<ul class="breadcrumb">
-						<li><a href="{{ route('home') }}">Home</a></li>
-						<li class="active">Post</li>
+						<li><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+						<li><a href="{{ route('blogs.index') }}">Post</a></li>
+						<li class="active">All</li>
 					</ul>
 				</div>
 				<div class="title_right">
@@ -31,12 +32,8 @@
                 </p>
 
                 <div class="x_panel">
-					@if (session('flash_notification.message'))
-					<div class="alert alert-{{ session('flash_notification.level') }}">
-        				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						{!! session('flash_notification.message') !!}
-					</div>
-					@endif
+					@include('b.blogs.partials.message')
+
 					@if (! $posts->count())
 						<div class="alert alert-danger">
 							<strong>No Record</strong>
@@ -46,6 +43,17 @@
 							@include('b.blogs.table')
 						</div>
 					@endif
+
+					<div class="ln_solid clearfix"></div>
+					<div>
+						<div class="pull-left">
+							{!! $posts->links() !!}
+						</div>
+						<div class="pull-right">
+							{{ $postCount }} {{ str_plural('Item', $postCount) }}
+						</div>
+					</div>
+
 				</div>
 			</div>
         </div>

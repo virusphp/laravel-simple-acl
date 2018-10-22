@@ -38,9 +38,8 @@
           <!-- End Maintenance -->
           <li><a><i class="fa fa-group"></i> Management User <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="#"><i class="fa fa-user"></i> User</a></li>
+              <li><a href="{{ route('users.index') }}"><i class="fa fa-user"></i> User</a></li>
               <li><a href="#"><i class="fa fa-lock"></i> Role</a></li>
-              <li><a href="#"><i class="fa fa-key"></i> Permission</a></li>
             </ul>
 		  </li>
         </ul>

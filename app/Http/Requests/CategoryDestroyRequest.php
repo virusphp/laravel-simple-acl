@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+class CategoryDestroyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,17 @@ class CategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return !($this->route('categories') == config('cms.default_category_id'));
+    }
+
+    public function forbiddenResponse()
+    {
+        $notif = [
+            'alert-type' => 'warning',
+            'message' => 'Tidak di perbolehkan menghapus Kategori Default!!'
+        ];
+
+        return redirect()->back()->with($notif);
     }
 
     /**
@@ -24,14 +34,7 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:categories|max:255'
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'name.required'      => 'Nama Kategori Dilarang Kosong'
+            //
         ];
     }
 }

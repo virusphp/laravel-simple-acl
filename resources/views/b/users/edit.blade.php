@@ -6,7 +6,7 @@
             	<div class="title_left">
                 <ul class="breadcrumb">
                   <li><a href="{{ route('home') }}">Home</a></li>
-                  <li><a href="{{ route('categories.index') }}">Categories</a></li>
+                  <li><a href="{{ route('users.index') }}">Users</a></li>
                   <li class="active">Edit</li>
                 </ul>
             	</div>
@@ -16,7 +16,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-					          <h3><i class="fa fa-list"></i> Edit Category</h3>
+					          <h3><i class="fa fa-list"></i> Edit User</h3>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li> </ul>
@@ -24,11 +24,17 @@
                   </div>
                   <div class="x_content">
                   <br />
-              {!! Form::model($category, ['route' => ['categories.update', $category->id], 'method' => 'put', 'class' => 'form-horizontal']) !!}
+                  {!! Form::model($user, [
+                      'route' => ['users.update', $user->id],
+                      'method' => 'PUT', 
+                      'file' => TRUE,
+                      'id' => 'user-form',
+                      'class' => 'form-horizontal'
+                  ]) !!}
 
-						  @include('b.categories._form')
+                  @include('b.users._form')
 
-				   	  {!! Form::close() !!}
+                  {!! Form::close() !!}
                   </div>
                 </div>
               </div>
@@ -37,4 +43,4 @@
           </div>
         </div>
 @endsection
-@include('b.categories.script')
+@include('b.users.script')

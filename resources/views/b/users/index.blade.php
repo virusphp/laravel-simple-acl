@@ -9,34 +9,34 @@
 			<div class="title_left">
 				<ul class="breadcrumb">
 					<li><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-					<li><a href="{{ route('categories.index') }}">Categories</a></li>
+					<li><a href="{{ route('users.index') }}">Users</a></li>
 					<li class="active">All</li>
 				</ul>
 			</div>
 
-			@include('b.categories.partials.search')
+			@include('b.users.partials.search')
 
 		</div>
 
     <div class="clearfix"></div>
 
 	<div class="col-md-12 col-sm-12 col-xs-12">
-		<p><a href="{{ route('categories.create') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> </a></p>
+		<p><a href="{{ route('users.create') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> </a></p>
 
 		<div class="x_panel">
 
 			<div class="x_content">
-				@include('b.categories.table')
+				@include('b.users.table')
 			</div>
 			
 			<!-- paginate -->
 			<div class="ln_solid clearfix"></div>
 			<div>
 				<div class="pull-left">
-					{!! $categories->links() !!}
+					{!! $users->links() !!}
 				</div>
 				<div class="pull-right">
-					{{ $categoryCount }} {{ str_plural('Item', $categoryCount) }}
+					{{ $userCount }} {{ str_plural('Item', $userCount) }}
 				</div>
 			</div>
 
@@ -47,8 +47,6 @@
 </div>
 @endsection
 @push('scripts')
-<script type="text/javascript" src="{{ asset('datatables/js/jquery.dataTables.min.js') }}" ></script>
-<script type="text/javascript" src="{{ asset('datatables/js/dataTables.bootstrap4.min.js') }}" ></script>
 <script>
   @if(Session::has('message'))
     var type = "{{ Session::get('alert-type', 'info') }}";

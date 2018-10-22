@@ -1,53 +1,63 @@
 <?php
 namespace App\Repository;
 
-use App\Category;
-use App\Post;
+use App\User;
 use DB;
 
-class RepoCategory
+class RepoUser
 {
     protected $limit = 5;
-
-    public function getCategory($req)
+    
+    public function user()
     {
-        $category = Category::with('posts')->where(function ($query) use ($req) {
+        return new User;
+    }
+
+    public function getUser($req)
+    {
+        $user = User::where(function ($query) use ($req) {
             if (($term = $req->get("term"))) {
                 $keywords = '%' . $term . '%';
                 $query->orWhere('name', 'LIKE', $keywords);
-                $query->orWhere('slug', 'LIKE', $keywords);
+                // $query->orWhere('slug', 'LIKE', $keywords);
             }
         })
         ->terbaru()
         ->paginate($this->limit);
 
-        $category->appends($req->only('term'));
+        $user->appends($req->only('term'));
 
-        return $category;
+        return $user;
     }
 
-    public function categoryCount()
+    public function userCount()
     {
-        $category = Category::count();
-        return $category;
+        $user = User::count();
+        return $user;
     }
 
-    public function saveCategory($req, $id=null)
+    public function saveUser($req, $id=null)
     {
+        // dd($req->all(), $id);
         DB::beginTransaction();
         try
         {
             $params = [
+                '_token' => $req->_token,
                 'name' => $req->name,
-                'slug' => $req->slug
+                'email' => $req->email,
+                'slug' => $req->slug,
+                'password' => $req->password,
+                'password_confirmation' => $req->password_confirmation
             ];
 
             if(!$id) {
-                $category = Category::create($params);
+                $user = User::create($req->all());
             } else {
-                $category = Category::findOrFail($id);
-                if (!is_null($category)) {
-                    $category = $category->update($params);
+                $user = User::find($id);
+                // dd($user);
+                if (!is_null($user)) {
+                    $user = $user->update($req->all());
                 } else {
                     DB::rollback();
                     return false;
@@ -88,19 +98,19 @@ class RepoCategory
             case 'create' :
                 $notif = [
                     'alert-type' => 'success',
-                    'message' => 'Kategori berhasil di buat!'
+                    'message' => 'User berhasil di buat!'
                 ];
                 break;
             case 'update' :
                 $notif = [
                     'alert-type' => 'success',
-                    'message' => 'Kategori berhasil di update!'
+                    'message' => 'User berhasil di update!'
                 ];
                 break;
             case 'delete' :
                 $notif = [
                     'alert-type' => 'success',
-                    'message' => 'Kategori berhasil di Hapus!'
+                    'message' => 'User berhasil di Hapus!'
                 ];
                 break;
             case 'error' :

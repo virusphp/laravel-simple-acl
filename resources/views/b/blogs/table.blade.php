@@ -38,13 +38,3 @@
 	  </tbody>
 	  @endforeach
 	</table>
-
-	<div class="ln_solid clearfix"></div>
-	<div>
-		<div class="pull-left">
-			{!! $posts->links() !!}
-		</div>
-		<div class="pull-right">
-			{{ $postCount }} {{ str_plural('Item', $postCount) }}
-		</div>
-	</div>

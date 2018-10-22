@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="{{ asset('b/plugin/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('b/plugin/toast/css/toast.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('b/css/custom.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('b/css/pekalonganinfo.css') }}">
 
   </head>
 

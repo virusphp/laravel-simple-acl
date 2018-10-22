@@ -3,25 +3,27 @@
 		<thead>
 			<tr>
 				<th># No </th>
-				<th>Nama Kategori</th>
-				<th>Jumlah Post</th>
+				<th>Nama Akun</th>
+				<th>Email</th>
+				<th>Role</th>
 				<th>Di Buat</th>
 				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
-		@foreach($categories as $c)	
+		@foreach($users as $u)	
 			<tr>
 				<td>{{ $loop->iteration }}</td>
-				<td>{{ $c->name }}</td>
-				<td>{{ $c->posts->count() }}</td>
-				<td>{{ tanggalIndo($c->created_at) }}</td>
+				<td>{{ $u->name }}</td>
+				<td>{{ $u->email }}</td>
+				<td>-</td>
+				<td>{{ tanggalIndo($u->created_at) }}</td>
 				<td>
-					{!! Form::open(['route' => ['categories.destroy',$c->id], 'method' => 'DELETE']) !!}
-						<a href="{{ route ('categories.edit',$c->id) }}" class="btn btn-xs btn-warning">
+					{!! Form::open(['route' => ['users.destroy',$u->id], 'method' => 'DELETE']) !!}
+						<a href="{{ route ('users.edit',$u->id) }}" class="btn btn-xs btn-warning">
 							<i class="fa fa-pencil"></i> 
 						</a>
-						@if($c->id == config('cms.default_category_id'))
+						@if($u->id == config('cms.default_user_id'))
 							<button type="submit" class="btn btn-xs btn-danger" onclick="return false" disabled>
 								<i class="fa fa-trash-o"></i> 
 							</button>

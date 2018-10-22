@@ -1,0 +1,46 @@
+*, :after, :before {
+	box-sizing: border-box;
+}
+
+.pagination {
+	margin: 0;
+}
+
+.ln_solid {
+	margin: 10px;
+}
+
+.btn-published {
+	color: #fff;
+    background: #26B99A;
+    border: 1px solid #169F85;
+}
+
+.btn-all {
+	color: #fff;
+    background-color: #204d74;
+    border-color: #122b40;
+}
+
+.btn-scheduled {
+	color: #fff;
+    background-color: #269abc;
+    border-color: #1b6d85;
+}
+
+.btn-draft {
+    color: #fff;
+    background-color: #d58512;
+    border-color: #985f0d;
+}
+
+.btn-trash {
+    color: #fff;
+    background-color: #ac2925;
+    border-color: #761c19;
+}
+
+a.selected-status {
+	color: #333;
+    text-decoration: none;
+}
