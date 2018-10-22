@@ -13,7 +13,6 @@
 					{!! Form::textarea('body', null, ['id' => 'editor', 'class'=>'form-control', 'required' => 'required', 'title' => 'Body Dilarang Kosong'])!!}
                     {!! $errors->first('body', '<p class="help-block"><b>:message</b></p>') !!}
                 </div>
-
 			</div>
 		</div>
 	</div>

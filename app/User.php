@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 
 class User extends Authenticatable
 {
-    use Notifiable; 
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','slug',
     ];
 
     /**
@@ -33,7 +33,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Role', 'role_user');
     }
- 
+
     public function hasRole($role)
     {
 		if ($this->isSuper()) {
@@ -72,7 +72,7 @@ class User extends Authenticatable
         }
 
         return $this->roles()->detach($role);
-    } 
+    }
 
     public function posts()
     {

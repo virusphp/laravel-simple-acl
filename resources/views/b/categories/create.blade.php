@@ -10,7 +10,7 @@
 						<li class="active">Create</li>
 					</ul>
             	</div>
-			
+
             <div class="clearfix"></div>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
@@ -25,9 +25,7 @@
                   <div class="x_content">
                   <br />
 					{!! Form::open(['route'=>'categories.store', 'class'=> 'form-horizontal form-label-left']) !!}
-
 						@include('b.categories._form')
-
 				   	{!! Form::close() !!}
                   </div>
                 </div>

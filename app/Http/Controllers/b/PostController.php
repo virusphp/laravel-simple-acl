@@ -28,10 +28,10 @@ class PostController extends BackendController
     {
         if(is_Null($request->filter)){
             $posts = Post::with('user')->latest()->paginate(10);
-            $postCount = Post::count();
+            $postCount = count($posts);
         }else{
             $posts = $this->filterPost($request);
-            $postCount = Post::count();
+            $postCount = count($posts);
         }
         return view('b.blogs.index', compact('posts', 'postCount'));
     }
@@ -95,7 +95,7 @@ class PostController extends BackendController
 
          Session::flash('flash_notification', [
             'level'=>'danger',
-            'message'=>'<h4><i class="icon fa fa-trash-o"></i>  !</h4> Post '.$post->title.' telah di hapus.'
+            'message'=>'<h4><i class="icon fa fa-trash-o"></i>  !</h4> Post '.$post->title.' telah di masuk Tong Sampah.'
         ]);
         return redirect('route'('blogs.index'));
     }
