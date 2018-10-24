@@ -16,17 +16,19 @@ class MenuServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('layouts.f.patrials.menu', function($view){
-            $categories = Category::with(['posts'])->orderBy('name', 'asc')->get();
-        return $view->with('categories', $categories);
+            $categories =  Category::with(['posts' => function($query) {
+                $query->published();
+            }])->where('id', '!=', 1)->orderBy('name', 'asc')->get();
+            return $view->with('categories', $categories);
         });
 
         view()->composer('f.widgets.terkini', function($view){
-            $terkini = Post::with('user')->latest()->published()->paginate(9);
+            $terkini = Post::with('user')->latest()->published()->paginate(3);
         return $view->with('terkini', $terkini);
         });
 
         view()->composer('f.widgets.populer', function($view){
-            $populer = Post::with('user')->latest()->populer()->paginate(9);
+            $populer = Post::with('user')->latest()->populer()->paginate(5);
         return $view->with('populer', $populer);
         });
     }

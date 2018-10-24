@@ -1,7 +1,7 @@
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="http://placeimg.com/800/400/nature" alt="First slide">
+      <img class="d-block w-100" src="{{ asset('f/images/slider/back_1.jpg') }}" width="800" height="435" alt="Pekalongan_info">
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="http://placeimg.com/800/400/arch" alt="Second slide">

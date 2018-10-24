@@ -1,46 +1,29 @@
-@extends('layouts.b.master')
-@section('content')
-		<div class="right_col" role="main">
-          <div class="">
-            <div class="page-title"> </div>
-            	<div class="title_left">
-                <ul class="breadcrumb">
-                  <li><a href="{{ route('home') }}">Home</a></li>
-                  <li><a href="{{ route('users.index') }}">Users</a></li>
-                  <li class="active">Edit</li>
-                </ul>
-            	</div>
-			
-            <div class="clearfix"></div>
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-					          <h3><i class="fa fa-list"></i> Edit User</h3>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li> </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                  <br />
-                  {!! Form::model($user, [
-                      'route' => ['users.update', $user->id],
-                      'method' => 'PUT', 
-                      'file' => TRUE,
-                      'id' => 'user-form',
-                      'class' => 'form-horizontal'
-                  ]) !!}
-
-                  @include('b.users._form')
-
-                  {!! Form::close() !!}
-                  </div>
-                </div>
-              </div>
+{!! Form::model($edit, ['route' => ['users.update', $edit->id], 'method' => 'PUT', 'class' => 'form-horizontal']) !!}
+    <div class="x_content">
+        <div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    {!! Form::text('name', null, ['id'=> 'name', 'placeholder' => 'Nama', 'class' => 'form-control col-md-8 col-xs-12', 'required' => 'required', 'title' => 'Nama Dilarang Kosong']) !!}
+                {!! $errors->first('name', '<p class="help-block"><b>:message</b></p>') !!}
             </div>
-
-          </div>
         </div>
-@endsection
-@include('b.users.script')
+        <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                {!! Form::text('email', null, ['placeholder' => 'E-mail', 'class' => 'form-control col-md-8 col-xs-12', 'required' => 'required', 'title' => 'Email Dilarang Kosong']) !!}
+            {!! $errors->first('email', '<p class="help-block"><b>:message</b></p>') !!}
+        </div>
+        {!! Form::hidden('slug', null, ['id' => 'slug','class' => 'form-control col-md-7 col-xs-12']) !!}
+        <div class="form-group { $errors->has('role_id') ? 'has-error' : '' }}">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    {!! Form::select('role_id', App\Role::pluck('name', 'id'), null, ['placeholder' => 'Pilih Role', 'class' => 'form-control col-md-8 col-xs-12', 'required' => 'required', 'title' => 'Silahkan Pilih Role']) !!}
+                {!! $errors->first('role_id', '<p class="help-block"><b>:message</b></p>') !!}
+            </div>
+        </div>
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                {!! Form::reset('Reset', ['class' => 'btn btn-warning']) !!}
+                {!! Form::submit(isset($edit) ? 'Update' : 'Simpan', ['class' => 'btn btn-primary']) !!}
+            </div>
+        </div>
+    </div>
+{!! Form::close() !!}

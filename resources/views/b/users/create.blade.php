@@ -1,45 +1,44 @@
-@extends('layouts.b.master')
-@section('content')
-		<div class="right_col" role="main">
-          <div class="">
-            <div class="page-title"> </div>
-            	<div class="title_left">
-					<ul class="breadcrumb">
-						<li><a href="{{ route('home') }}">Home</a></li>
-						<li><a href="{{ route('users.index') }}">Users</a></li>
-						<li class="active">Create</li>
-					</ul>
-            	</div>
-			
-            <div class="clearfix"></div>
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-					           <h3><i class="fa fa-list"></i> Tambah User</h3>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li> </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                  <br />
-                      {!! Form::model($user,[
-                          'route'=>'users.store', 
-                          'file'=>TRUE,
-                          'class'=> 'form-horizontal form-label-left',
-                          'id'=> 'user-form'
-                      ]) !!}
-
-                      @include('b.users._form')
-
-                      {!! Form::close() !!}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
+{!! Form::model([
+    'method' => 'POST',
+    'route'=>'users.store',
+    'id' => 'form-user',
+    'class'=> 'form-horizontal form-label-left form-inputan'
+])!!}
+    <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            {!! Form::text('name', null, ['id' => 'name', 'placeholder' => 'Nama','class' => 'form-control col-md-7 col-xs-12','title' => 'Nama Dilarang Kosong']) !!}
         </div>
-@endsection
-@include('b.users.script')
+    </div>
+    <br><br>
+    <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+        {!! Form::text('email', null, ['placeholder' => 'E-mail', 'class' => 'form-control col-md-8 col-xs-12', 'required' => 'required', 'title' => 'Email Dilarang Kosong']) !!}
+        {!! $errors->first('email', '<p class="help-block"><b>:message</b></p>') !!}
+    </div>
+    <br>
+    {!! Form::hidden('slug', null, ['id' => 'slug','class' => 'form-control col-md-7 col-xs-12']) !!}
+    <br>
+    <div class="form-group { $errors->has('role_id') ? 'has-error' : '' }}">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+            {!! Form::select('role_id', $role, null, ['placeholder' => 'Pilih Role', 'class' => 'form-control col-md-8 col-xs-12', 'required' => 'required', 'title' => 'Silahkan Pilih Role']) !!}
+            {!! $errors->first('role_id', '<p class="help-block"><b>:message</b></p>') !!}
+        </div>
+    </div>
+    <br>
+    <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+        {!! Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control col-md-8 col-xs-12', 'required' => 'required', 'title' => 'Password dilarang kosong']) !!}
+        {!! $errors->first('password', '<p class="help-block"><b>:message</b></p>') !!}
+    </div>
+    <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+        {!! Form::password('password_confirmation', ['placeholder' => 'Password confirmation', 'class' => 'form-control col-md-8 col-xs-12', 'required' => 'required', 'title' => 'Password dilarang kosong']) !!}
+        {!! $errors->first('password_confirmation', '<p class="help-block"><b>:message</b></p>') !!}
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            {!! Form::reset('Reset', ['class' => 'btn btn-warning']) !!}
+            {!! Form::submit(isset($edit) ? 'Update' : 'Simpan', ['class' => 'btn btn-primary']) !!}
+        </div>
+    </div>
+{!! Form::close() !!}

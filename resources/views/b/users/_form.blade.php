@@ -1,41 +1,44 @@
-    <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-		{!! Form::label('name','Name',['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-		<div class="col-md-6 col-sm-6 col-xs-12">
-			{!! Form::text('name', null, ['class' => 'form-control col-md-7 col-xs-12']) !!}
-			{!! $errors->first('name', '<p class="help-block">:message</p>') !!}
-		</div>
-	</div>
-	{!! Form::hidden('slug', null, ['id' => 'slug','class' => 'form-control col-md-7 col-xs-12']) !!}
-
-	<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-		{!! Form::label('email','E-Mail',['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-		<div class="col-md-6 col-sm-6 col-xs-12">
-			{!! Form::text('email', null, ['class' => 'form-control col-md-7 col-xs-12']) !!}
-			{!! $errors->first('email', '<p class="help-block">:message</p>') !!}
-		</div>
-	</div>
-
-	<div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-		{!! Form::label('password','Password',['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-		<div class="col-md-6 col-sm-6 col-xs-12">
-			{!! Form::password('password', ['class' => 'form-control col-md-7 col-xs-12']) !!}
-			{!! $errors->first('password', '<p class="help-block">:message</p>') !!}
-		</div>
-	</div>
-
-	<div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
-		{!! Form::label('password_confirmation','Password Confirmasi',['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-		<div class="col-md-6 col-sm-6 col-xs-12">
-			{!! Form::password('password_confirmation', ['class' => 'form-control col-md-7 col-xs-12']) !!}
-			{!! $errors->first('password_confirmation', '<p class="help-block">:message</p>') !!}
-		</div>
-	</div>
-
-	<div class="ln_solid"></div>
-	<div class="form-group">
-		<div class="col-md-2 col-sm-2 col-xs-12 col-md-offset-3">
-			{!! Form::submit($user->exists ? 'Update' : 'Simpan', ['class' => 'btn btn-primary']) !!}
-			<a href="{{ route('users.index') }}" class="btn btn-success">Batal</a>
-		</div>
-	</div>
-
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <p>FORMULIR</p>
+        </div>
+        <div class="x_content">
+            <div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      {!! Form::text('name', null, ['id'=> 'name', 'placeholder' => 'Nama', 'class' => 'form-control col-md-8 col-xs-12', 'required' => 'required', 'title' => 'Nama Dilarang Kosong']) !!}
+                    {!! $errors->first('name', '<p class="help-block"><b>:message</b></p>') !!}
+                </div>
+            </div>
+            
+            <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  {!! Form::text('email', null, ['placeholder' => 'E-mail', 'class' => 'form-control col-md-8 col-xs-12', 'required' => 'required', 'title' => 'Email Dilarang Kosong']) !!}
+                {!! $errors->first('email', '<p class="help-block"><b>:message</b></p>') !!}
+            </div>
+        </div>
+        {!! Form::hidden('slug', null, ['id' => 'slug','class' => 'form-control col-md-7 col-xs-12']) !!}
+        
+            <div class="form-group { $errors->has('role_id') ? 'has-error' : '' }}">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      {!! Form::select('role_id', App\Role::pluck('name', 'id'), null, ['placeholder' => 'Pilih Role', 'class' => 'form-control col-md-8 col-xs-12', 'required' => 'required', 'title' => 'Silahkan Pilih Role']) !!}
+                    {!! $errors->first('role_id', '<p class="help-block"><b>:message</b></p>') !!}
+                </div>
+            </div>
+           
+            <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  {!! Form::password('password', null, ['placeholder' => 'password', 'class' => 'form-control col-md-8 col-xs-12', 'required' => 'required', 'title' => 'Password dilarang kosong']) !!}
+                  {!! $errors->first('password', '<p class="help-block"><b>:message</b></p>') !!}
+            </div>
+    </div>
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                {!! Form::reset('Reset', ['class' => 'btn btn-warning']) !!}
+                {!! Form::submit(isset($edit) ? 'Update' : 'Simpan', ['class' => 'btn btn-primary']) !!}
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

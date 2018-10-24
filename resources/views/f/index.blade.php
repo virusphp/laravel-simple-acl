@@ -75,7 +75,7 @@
                     <span class="badge badge-primary">
                           <i class="fa fa-calendar"></i> {{ $bl->Date }}
                           </span>
-                    <a href="javascript:void(0)" class="float-right mb-1">
+                    <a href="{{ route('show.post', $bl->slug) }}" class="float-right mb-1">
                       <button type="submit" class="btn-cont">Continue reading
                         <i class="fas fa-angle-double-right animated fadeInLeft infinite"></i>
                       </button>

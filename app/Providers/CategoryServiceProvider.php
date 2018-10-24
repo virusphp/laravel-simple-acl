@@ -17,7 +17,7 @@ class CategoryServiceProvider extends ServiceProvider
         view()->composer('f.widgets.category', function($view){
             $categories =  Category::with(['posts' => function($query) {
                 $query->published();
-            }])->orderBy('name', 'asc')->get();
+            }])->where('id', '!=', 1)->orderBy('name', 'asc')->get();
 
             return $view->with('categories', $categories);
         });

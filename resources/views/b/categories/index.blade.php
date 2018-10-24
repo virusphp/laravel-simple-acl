@@ -67,6 +67,5 @@
 				break;
     }
 	@endif
-
 </script>
 @endpush

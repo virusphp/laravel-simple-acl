@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
 use File;
 use Session;
-
+use DB;
 
 class PostController extends BackendController
 {
@@ -28,10 +28,10 @@ class PostController extends BackendController
     {
         if(is_Null($request->filter)){
             $posts = Post::with('user')->latest()->paginate(10);
-            $postCount = Post::count();
+            $postCount = count($posts);
         }else{
             $posts = $this->filterPost($request);
-            $postCount = Post::count();
+            $postCount = count($posts);
         }
         return view('b.blogs.index', compact('posts', 'postCount'));
     }
@@ -95,10 +95,30 @@ class PostController extends BackendController
 
          Session::flash('flash_notification', [
             'level'=>'danger',
-            'message'=>'<h4><i class="icon fa fa-trash-o"></i>  !</h4> Post '.$post->title.' telah di hapus.'
+            'message'=>'<h4><i class="icon fa fa-trash-o"></i>  !</h4> Post '.$post->title.' telah di masuk Tong Sampah.'
         ]);
         return redirect('route'('blogs.index'));
     }
+
+    public function tongSampah(){
+        $posts = Post::onlyTrashed()->paginate(10);
+        $postCount = count($posts);
+        return view('b.blogs.tongsampah', compact('posts', 'postCount'));
+    }
+
+    public function restore($id)
+	{
+        $post = Post::onlyTrashed()->findOrFail($id);
+		$post->restore();
+		return redirect('route'('blogs.index'));
+    }
+
+    public function forceDestroy($id)
+	{
+		$post = Post::withTrashed()->findOrFail($id);
+		$post->forceDelete();
+        return redirect('route'('blogs.index'));
+	}
 
     public function publish($id)
     {

@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\b;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\b\BackendController;
 use App\Http\Requests\CategoryRequest;
@@ -20,14 +18,12 @@ class CategoriesController extends BackendController
     {
         $this->repo = new RepoCategory;
     }
-
     public function index(Request $req)
     {
         $categories = $this->repo->getCategory($req);
         $categoryCount = $this->repo->categoryCount();
         return view('b.categories.index', compact('categories','categoryCount'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +34,6 @@ class CategoriesController extends BackendController
         $category = $this->repo->category();
         return view('b.categories.create',compact('category'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -55,7 +50,6 @@ class CategoriesController extends BackendController
             return redirect()->route('categories.create')->with($notif); 
        }
     }
-
     /**
      * Display the specified resource.
      *
@@ -66,7 +60,6 @@ class CategoriesController extends BackendController
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -82,7 +75,6 @@ class CategoriesController extends BackendController
             return redirect()->route('categories.index');
         }
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -100,7 +92,6 @@ class CategoriesController extends BackendController
             return redirect()->route('categories.edit', $id)->with($notif); 
        } 
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -116,7 +107,10 @@ class CategoriesController extends BackendController
                 $notif = $this->repo->getPesan('error');
             }
         } 
-
         return redirect()->route('categories.index')->with($notif);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bfd43eaa597743262972d1fbd155e875147e48d3
