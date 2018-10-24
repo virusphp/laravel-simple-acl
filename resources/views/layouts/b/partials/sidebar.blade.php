@@ -28,7 +28,7 @@
           <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home </a></li>
           <li><a href="{{ route('categories.index') }}"><i class="fa fa-list"></i> Category </a></li>
 		      <!-- Blogs Menu -->
-          <li><a><i class="fa fa-building"></i> Blogs<span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-building"></i> Post<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{ route('blogs.index') }}"><i class="fa fa-clipboard"></i> Post All</a></li>
               <li><a href="{{ route('blogs.create') }}"><i class="fa fa-plus"></i> Blog posts</a></li>
@@ -39,8 +39,6 @@
           <li><a><i class="fa fa-group"></i> Management User <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{ route('users.index') }}"><i class="fa fa-user"></i> User</a></li>
-              <li><a href="#"><i class="fa fa-lock"></i> Role</a></li>
-              <li><a href="#"><i class="fa fa-key"></i> Permission</a></li>
             </ul>
 		  </li>
         </ul>

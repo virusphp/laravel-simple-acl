@@ -1,7 +1,7 @@
 <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-11 align-items-center form-search ">
-        <form action="" method="post" class="animated fadeInDown">
+        <form action="{{ url('/') }}" method="get" class="animated fadeInDown">
           <input type="text" class="form-control input-text" name="" placeholder="cari..." id="">
         </form>
       </div>
@@ -11,18 +11,18 @@
     </div>
     <div class="row flex-nowrap justify-content-between align-items-center header-logo">
       <div class="col-4 float-left sosial-media">
-        <a href="https://twitter.com">
+        <a href="https://twitter.com/pekalongan_info">
           <i class="fab fa-twitter"></i>
         </a>
-        <a href="https://facebook.com">
+        <a href="https://www.facebook.com/pekalonganinfo">
           <i class="fab fa-facebook"></i>
         </a>
-        <a href="https://instagram.com">
+        <a href="https://www.instagram.com/pekalonganinfo">
           <i class="fab fa-instagram"></i>
         </a>
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#"><img src="{{ asset('f/image/web-logo.png') }}" class="img-logo" alt="" srcset=""></a>
+        <a class="blog-header-logo text-dark" href="{{ url('/') }}"><img src="{{ asset('f/image/web-logo.png') }}" class="img-logo" alt="" srcset=""></a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="btn btn-sm btn-outline-primary btn-search" href="#"><i class="fa fa-search"></i></a>

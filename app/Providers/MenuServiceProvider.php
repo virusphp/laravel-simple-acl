@@ -21,12 +21,12 @@ class MenuServiceProvider extends ServiceProvider
         });
 
         view()->composer('f.widgets.terkini', function($view){
-            $terkini = Post::with('user')->latest()->published()->paginate(9);
+            $terkini = Post::with('user')->latest()->published()->paginate(3);
         return $view->with('terkini', $terkini);
         });
 
         view()->composer('f.widgets.populer', function($view){
-            $populer = Post::with('user')->latest()->populer()->paginate(9);
+            $populer = Post::with('user')->latest()->populer()->paginate(5);
         return $view->with('populer', $populer);
         });
     }

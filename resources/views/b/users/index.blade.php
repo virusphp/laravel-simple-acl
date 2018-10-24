@@ -15,12 +15,13 @@
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
-			    <button class="btn btn-default" type="button">Go!</button>
-			</span>
+			        <button class="btn btn-default" type="button">Go!</button>
+			      </span>
           </div>
         </div>
       </div>
     </div>
+
     <div class="clearfix"></div>
     <div class="col-md-6 col-sm-6 col-xs-6">
       <div class="x_panel">
@@ -84,19 +85,37 @@
         @endif
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6 col-sm-6 col-xs-6">
-        <div class="x_panel">
-          @if(!empty($edit))
-          @include('b.users.edit')
-          @elseif(!empty($password))
-          @include('b.users.gantipassword')
-          @else
-          @include('b.users.create')
-          @endif
+
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+          <div class="x_panel">
+
+            <div class="x_title">
+              <h3><i class="fa fa-list"></i> Tambah Category</h3>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+            {!! Form::model([
+              'method' => 'POST',
+              'route'=>'users.store',
+              'class'=> 'form-horizontal form-label-left form-inputan'
+            ])!!}
+              @if(!empty($edit))
+                @include('b.users.edit')
+              @elseif(!empty($password))
+                @include('b.users.gantipassword')
+              @else
+                @include('b.users.create')
+              @endif
+            {!! Form::close() !!}
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
+
+  </div>
+  </div>
   </div>
 </div>
 @endsection
