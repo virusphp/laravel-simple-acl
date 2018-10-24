@@ -4,11 +4,11 @@
           <div class="">
             <div class="page-title"> </div>
             	<div class="title_left">
-					<ul class="breadcrumb">
-						<li><a href="{{ route('home') }}">Home</a></li>
-						<li><a href="{{ route('categories.index') }}">Categories</a></li>
-						<li class="active">Edit</li>
-					</ul>
+                <ul class="breadcrumb">
+                  <li><a href="{{ route('home') }}">Home</a></li>
+                  <li><a href="{{ route('categories.index') }}">Categories</a></li>
+                  <li class="active">Edit</li>
+                </ul>
             	</div>
 			
             <div class="clearfix"></div>

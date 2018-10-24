@@ -12,6 +12,12 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
         App\Category::insert([
+            ['name' => 'Non Kategori',
+             'slug' => 'non-kategori',
+            ],
+            ['name' => 'Info Sekitar',
+             'slug' => 'info-sekitar',
+            ],
             ['name' => 'Wisata',
              'slug' => 'wisata',
             ],

@@ -13,6 +13,7 @@ class RoleSeeder extends Seeder
     {
         // Basic roles data
         App\Role::insert([
+            ['name' => 'developer'],
             ['name' => 'admin'],
             ['name' => 'author'],
             ['name' => 'editor'],

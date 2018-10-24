@@ -21,12 +21,12 @@ class UserSeeder extends Seeder
 
         // Create a user, and give roles
         $user = App\User::create([
-            'name' => 'Admin',
-            'slug' => 'admin',
-            'email' => 'admin@admin.com',
+            'name' => 'Developer',
+            'slug' => 'developer',
+            'email' => 'admin@pekalonganinfo.com',
             'password' => bcrypt('password'),
         ]);
 
-        $user->assignRole('admin');
+        $user->assignRole('developer');
     }
 }

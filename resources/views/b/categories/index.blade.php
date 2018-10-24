@@ -8,8 +8,9 @@
 
 			<div class="title_left">
 				<ul class="breadcrumb">
-					<li><a href="{{ route('home') }}">Home</a></li>
-					<li class="active">Category</li>
+					<li><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+					<li><a href="{{ route('categories.index') }}">Categories</a></li>
+					<li class="active">All</li>
 				</ul>
 			</div>
 
@@ -24,21 +25,20 @@
 
 		<div class="x_panel">
 
-		<div class="x_content">
-
-    		@include('b.categories.table')
-		<!-- paginate -->
-			<div class="row">
-				<div class="col-sm-5 pull-left">
-				{!! $categories->links() !!}
+			<div class="x_content">
+				@include('b.categories.table')
+			</div>
+			
+			<!-- paginate -->
+			<div class="ln_solid clearfix"></div>
+			<div>
+				<div class="pull-left">
+					{!! $categories->links() !!}
 				</div>
-				<div class="clearfix"></div>
-
-				<div class="col-sm-7 pull-right">
-
+				<div class="pull-right">
+					{{ $categoryCount }} {{ str_plural('Item', $categoryCount) }}
 				</div>
 			</div>
-		  </div>
 
 		</div>
 	</div>
@@ -67,6 +67,5 @@
 				break;
     }
 	@endif
-
 </script>
 @endpush

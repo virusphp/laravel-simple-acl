@@ -4,9 +4,11 @@ namespace App\Http\Controllers\b;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\User;
+use App\Role;
 
-class UserController extends Controller
+class UserController extends BackendController
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +17,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
-        $userCount = count($users);
-        return view('b.users.index', compact('users', 'userCount'));
+        $users = User::orderBy('name', 'asc')->paginate($this->limit);
+        $userCount = User::count();
+        $role = Role::where('id', '!=', 1)->pluck('name', 'id');
+        return view('b.users.index', compact('users', 'userCount', 'role'));
     }
 
     /**
@@ -36,7 +39,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
        $data = $request->all();
        $data['password'] = bcrypt($request->password);
@@ -66,7 +69,7 @@ class UserController extends Controller
     {
         $edit = User::findOrFail($id);
         $users = User::paginate(10);
-        $userCount = count($users);
+        $userCount = User::count();
         return view('b.users.index', compact('users', 'userCount', 'edit'));
 
     }

@@ -16,8 +16,10 @@ class MenuServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('layouts.f.patrials.menu', function($view){
-            $categories = Category::with(['posts'])->orderBy('name', 'asc')->get();
-        return $view->with('categories', $categories);
+            $categories =  Category::with(['posts' => function($query) {
+                $query->published();
+            }])->where('id', '!=', 1)->orderBy('name', 'asc')->get();
+            return $view->with('categories', $categories);
         });
 
         view()->composer('f.widgets.terkini', function($view){

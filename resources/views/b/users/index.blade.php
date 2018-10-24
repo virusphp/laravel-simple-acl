@@ -7,7 +7,8 @@
       <div class="title_left">
         <ul class="breadcrumb">
           <li><a href="{{ route('home') }}">Home</a></li>
-          <li class="active">user</li>
+          <li><a href="{{ route('users.index') }}">Users</a></li>
+          <li class="active">All User | Create</li>
         </ul>
       </div>
       <div class="title_right">
@@ -37,41 +38,8 @@
         </div>
         @else
         <div class="x_content">
-          <table class="table table-responsive table-bordered table-striped jambo_table bulk_action">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <?php $no=1; ?>
-            @foreach($users as $user)
-            <tbody>
-              <tr>
-                <td scope="row">{{ $no++ }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-                <td><span class="label label-success">{{ $user->roles()->pluck('name') }}</span></td>
-                <td>
-                {!! Form::open(['route' => ['users.destroy',$user->id], 'method' => 'DELETE']) !!}
-                  <a href="{{ route ('users.edit',$user->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit User">
-                    <i class="fa fa-pencil"></i>
-                  </a>
-                  <a href="{{ route ('users.password',$user->id) }}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Ganti Password">
-                        <i class="fa fa-key"></i>
-                      </a>
-                      <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah kamu yakin ingin Menghapus data ini')" >
-                            <i class="fa fa-trash-o"></i>
-                        </button>
-                    {!! Form::close() !!}
-                </td>
-              </tr>
-            </tbody>
-            @endforeach
-          </table>
+          @include('b.users.table')
+
           <div class="ln_solid clearfix"></div>
           <div>
             <div class="pull-left">
@@ -81,6 +49,7 @@
               {{ $userCount }} {{ str_plural('Item', $userCount) }}
             </div>
           </div>
+
         </div>
         @endif
       </div>
@@ -91,15 +60,11 @@
           <div class="x_panel">
 
             <div class="x_title">
-              <h3><i class="fa fa-list"></i> Tambah Category</h3>
+              <h3><i class="fa fa-list"></i> Tambah User</h3>
               <div class="clearfix"></div>
             </div>
+
             <div class="x_content">
-            {!! Form::model([
-              'method' => 'POST',
-              'route'=>'users.store',
-              'class'=> 'form-horizontal form-label-left form-inputan'
-            ])!!}
               @if(!empty($edit))
                 @include('b.users.edit')
               @elseif(!empty($password))
@@ -107,7 +72,6 @@
               @else
                 @include('b.users.create')
               @endif
-            {!! Form::close() !!}
             </div>
 
           </div>

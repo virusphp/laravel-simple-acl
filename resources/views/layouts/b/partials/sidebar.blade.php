@@ -36,10 +36,12 @@
           </li>
           <li><a href="{{ route('blogs.sampah') }}"><i class="fa fa-trash"></i> Tong Sampah </a></li>
           <!-- End Maintenance -->
+          @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('admin'))
           <li><a><i class="fa fa-group"></i> Management User <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{ route('users.index') }}"><i class="fa fa-user"></i> User</a></li>
             </ul>
+          @endif
 		  </li>
         </ul>
       </div>

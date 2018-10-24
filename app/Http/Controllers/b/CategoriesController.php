@@ -1,13 +1,10 @@
 <?php
-
 namespace App\Http\Controllers\b;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\b\BackendController;
 use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\CategoryDestroyRequest;
 use App\Repository\RepoCategory;
-use App\Category;
-
 class CategoriesController extends BackendController
 {
     protected $repo;
@@ -20,13 +17,12 @@ class CategoriesController extends BackendController
     {
         $this->repo = new RepoCategory;
     }
-
     public function index(Request $req)
     {
         $categories = $this->repo->getCategory($req);
-        return view('b.categories.index', compact('categories'));
+        $categoryCount = $this->repo->categoryCount();
+        return view('b.categories.index', compact('categories','categoryCount'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -34,9 +30,9 @@ class CategoriesController extends BackendController
      */
     public function create()
     {
-        return view('b.categories.create');
+        $category = $this->repo->category();
+        return view('b.categories.create',compact('category'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -53,7 +49,6 @@ class CategoriesController extends BackendController
             return redirect()->route('categories.create')->with($notif); 
        }
     }
-
     /**
      * Display the specified resource.
      *
@@ -64,7 +59,6 @@ class CategoriesController extends BackendController
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -80,7 +74,6 @@ class CategoriesController extends BackendController
             return redirect()->route('categories.index');
         }
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -98,14 +91,13 @@ class CategoriesController extends BackendController
             return redirect()->route('categories.edit', $id)->with($notif); 
        } 
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(CategoryDestroyRequest $request, $id)
     {
         if(!empty($id)) {
             if($this->repo->delete($id)) {
@@ -114,12 +106,6 @@ class CategoriesController extends BackendController
                 $notif = $this->repo->getPesan('error');
             }
         } 
-
         return redirect()->route('categories.index')->with($notif);
     }
-
-    public function saveCategory(Request $request)
-	{
-		return Category::create($request->all());
-	}
 }
