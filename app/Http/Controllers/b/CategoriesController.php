@@ -109,8 +109,4 @@ class CategoriesController extends BackendController
         } 
         return redirect()->route('categories.index')->with($notif);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> bfd43eaa597743262972d1fbd155e875147e48d3

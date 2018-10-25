@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Repository;
 use App\Category;
 use App\Post;
 use DB;
+
 class RepoCategory
 {
     protected $limit = 5;
+    
     public function getCategory($req)
     {
         $category = Category::with('posts')->where(function ($query) use ($req) {
@@ -20,11 +23,18 @@ class RepoCategory
         $category->appends($req->only('term'));
         return $category;
     }
+
+    public function category()
+    {
+        return new Category;
+    }
+
     public function categoryCount()
     {
         $category = Category::count();
         return $category;
     }
+    
     public function saveCategory($req, $id=null)
     {
         DB::beginTransaction();
@@ -52,6 +62,7 @@ class RepoCategory
             return false;
         }
     }
+
     public function delete($id)
     {
         DB::beginTransaction();
@@ -70,6 +81,7 @@ class RepoCategory
             return false;
         }
     }
+
     public function getPesan($nilai)
     {
         switch ($nilai) {

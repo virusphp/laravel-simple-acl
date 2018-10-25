@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 class UserRequest extends FormRequest
@@ -13,10 +12,6 @@ class UserRequest extends FormRequest
     {
         return true;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> bfd43eaa597743262972d1fbd155e875147e48d3
     /**
      * Get the validation rules that apply to the request.
      *
@@ -30,8 +25,4 @@ class UserRequest extends FormRequest
             'password' => 'required|confirmed'
         ];
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> bfd43eaa597743262972d1fbd155e875147e48d3

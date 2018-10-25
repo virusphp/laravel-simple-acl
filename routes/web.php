@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'b', 'prefix' => 'b'], fu
     Route::get('blogs/restore/{id}', 'PostController@restore')->name('blogs.restore');
     Route::get('blogs/forceDestroy/{forceDestroy}', 'PostController@forceDestroy')->name('blogs.forceDestroy');
     Route::resource('categories', 'CategoriesController');
-    Route::resource('users', 'UsersController');
+    Route::post('categories/save', 'CategoriesController@saveCategory')->name('categories.saveCategory');
     Route::resource('blogs', 'PostController');
     Route::get('blogs?{filter}', 'PostController@index')->name('blogs.filter');
     Route::get('blogs/publish/{id}', 'PostController@publish')->name('blogs.publish');
