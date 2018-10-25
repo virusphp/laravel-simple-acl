@@ -27,6 +27,17 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password123$$'),
         ]);
 
-        $user->assignRole('developer');
+        $user->assignRole('developer');    
+        
+        // Create a user, and give roles
+        $user1 = App\User::create([
+            'name' => 'Admin',
+            'slug' => 'admin',
+            'email' => 'admin@pekalonganinfo.com',
+            'password' => bcrypt('pekalonganinfo123$$'),
+        ]);
+
+        $user1->assignRole('admin');
+
     }
 }

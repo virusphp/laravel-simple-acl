@@ -17,7 +17,9 @@ class UserController extends BackendController
      */
     public function index()
     {
-        $users = User::orderBy('name', 'asc')->paginate($this->limit);
+        $users = User::orderBy('name', 'asc')
+                    ->whereNotBetween('id', [1,2])
+                    ->paginate($this->limit);
         $userCount = User::count();
         $role = Role::where('id', '!=', 1)->pluck('name', 'id');
         return view('b.users.index', compact('users', 'userCount', 'role'));
