@@ -9,6 +9,7 @@ return [
 	],
 	'default_category_id' => 1,
 	'default_user_id' => 1,
+	'default_user_dua_id' => 2,
 	'default_role_id' => 1,
 ];
 

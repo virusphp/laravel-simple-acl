@@ -24,7 +24,7 @@
                 <a href="{{ route ('users.password',$user->id) }}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Ganti Password">
                     <i class="fa fa-key"></i>
                 </a>
-                @if($user->id == config('cms.default_user_id'))
+                @if($user->id == config('cms.default_user_id') || $user-id == config('cms.default_user_dua_id') )
                     <button type="submit" class="btn btn-xs btn-danger" onclick="return false" disabled>
                         <i class="fa fa-trash-o"></i>
                     </button>
