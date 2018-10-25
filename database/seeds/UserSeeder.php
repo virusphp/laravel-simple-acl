@@ -23,8 +23,8 @@ class UserSeeder extends Seeder
         $user = App\User::create([
             'name' => 'Developer',
             'slug' => 'developer',
-            'email' => 'admin@pekalonganinfo.com',
-            'password' => bcrypt('password'),
+            'email' => 'develop@pekalonganinfo.com',
+            'password' => bcrypt('password123$$'),
         ]);
 
         $user->assignRole('developer');
