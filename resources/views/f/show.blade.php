@@ -44,7 +44,7 @@
             </div>
           </div>
           <hr>
-          <div class="fb-comments" data-href="{{ url()->full()}}" data-width="100%" data-numposts="10"></div>
+          <div class="fb-comments" data-href="{{ url()->full()}}" data-numposts="10"></div>
           <div id="fb-root"></div>
           <script>
             (function(d, s, id) {

@@ -19,7 +19,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 //frontend
 Route::group(['namespace' => 'f'], function () {
     Route::get('/', 'BlogController@index');
-    Route::get('blog/{post}', 'BlogController@show')->name('show.post');
+    Route::get('post/{post}', 'BlogController@show')->name('show.post');
     Route::get('categori/{category}', 'BlogController@category')->name('category');
     Route::get('author/{author}', 'BlogController@author')->name('author');
 
