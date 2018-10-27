@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="PEKALONGANINFO">
+  <meta content="@yield('title')" name="description"/>
+  <meta content="Pekalongan info, Pekalonganinfo, InfoPekalongan, Info Peklaongan, Info Seputar Pekalongan, pklinfo, isp, info pekalongan terkini" name="keywords"/>
   <meta name="google-site-verification" content="HpziBw6YVTEPc0xztAmxGwb0UEwjf7haS8FX4AZQtX0" />
   {{--  ==========twiter=============  --}}
   <meta name="twitter:card" content="summary_large_image" />

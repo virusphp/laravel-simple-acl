@@ -1,5 +1,5 @@
 @extends('layouts.f.master')
-@section('title', '-')
+@section('title', $post->title)
 @push('css')
 @endpush
 @section('iklanwebkiri')
