@@ -18,8 +18,8 @@ class UserController extends BackendController
     public function index()
     {
         $users = User::orderBy('name', 'asc')
-                    ->whereNotBetween('id', [1,2])
-                    ->paginate($this->limit);
+            ->whereNotBetween('id', [1, 2])
+            ->paginate($this->limit);
         $userCount = User::count();
         $role = Role::where('id', '!=', 1)->pluck('name', 'id');
         return view('b.users.index', compact('users', 'userCount', 'role'));
@@ -43,11 +43,11 @@ class UserController extends BackendController
      */
     public function store(UserRequest $request)
     {
-       $data = $request->all();
-       $data['password'] = bcrypt($request->password);
-       $role = User::create($data);
-       $role->roles()->attach($request->role_id);
-       return redirect(route('users.index'));
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+        $role = User::create($data);
+        $role->roles()->attach($request->role_id);
+        return redirect(route('users.index'));
     }
 
     /**

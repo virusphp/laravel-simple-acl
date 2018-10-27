@@ -7,10 +7,9 @@
 @endsection
 @section('content')
 <div class="container">
-    <img src="{{ $post->ImageUrl }}" class="img-fluid" alt="{{ $post->slug }}">
+  <img src="{{ $post->ImageUrl }}" class="img-fluid" alt="{{ $post->slug }}">
       </div>
-<!--media slider-->
-<main role="main" class="py-4">
+  <main role="main" class="py-4">
     <div class="row">
       <div class="col-md-8 blog-main ">
         <div class="blog-post">
@@ -55,6 +54,7 @@
               js.src = 'https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v3.1';
               fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
+
           </script>
         </nav>
       </div>

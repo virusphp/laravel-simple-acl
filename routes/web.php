@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 // Auth::routes();
 Route::get('pkl-admin', 'Auth\LoginController@showLoginForm')->name('show.login');
@@ -39,4 +39,12 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'b', 'prefix' => 'b'], fu
     Route::resource('blogs', 'PostController');
     Route::get('blogs?{filter}', 'PostController@index')->name('blogs.filter');
     Route::get('blogs/publish/{id}', 'PostController@publish')->name('blogs.publish');
+});
+
+//Sitemap
+
+Route::group(['namespace' => 'f'], function () {
+    Route::get('sitemap.xml', 'SitemapController@sitemap');
+    Route::get('sitemap/posts.xml', 'SitemapController@posts');
+    Route::get('sitemap/kategori.xml', 'SitemapController@categories');
 });

@@ -27,7 +27,7 @@ class UsersController extends BackendController
     {
         $users = $this->repo->getUser($req);
         $userCount = $this->repo->UserCount();
-        return view('b.users.index', compact('users','userCount'));
+        return view('b.users.index', compact('users', 'userCount'));
     }
 
     /**
@@ -49,13 +49,13 @@ class UsersController extends BackendController
      */
     public function store(UserRequest $request)
     {
-       if ($this->repo->saveUser($request)) {
-            $notif = $this->repo->getPesan('create'); 
-            return redirect()->route('users.index')->with($notif); 
-       } else {
+        if ($this->repo->saveUser($request)) {
+            $notif = $this->repo->getPesan('create');
+            return redirect()->route('users.index')->with($notif);
+        } else {
             $notif = $this->repo->getPesan('error');
-            return redirect()->route('users.create')->with($notif); 
-       }
+            return redirect()->route('users.create')->with($notif);
+        }
     }
 
     /**
@@ -96,26 +96,26 @@ class UsersController extends BackendController
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'email|required|unique:users,email,'.$id,
+            'email' => 'email|required|unique:users,email,' . $id,
             'password' => 'required_with:password_confirmation|confirmed'
         ]);
 
         $user = User::findOrFail($id);
         $user->update($request->all());
         if ($user) {
-            $notif = $this->repo->getPesan('update'); 
+            $notif = $this->repo->getPesan('update');
         } else {
             $notif = $this->repo->getPesan('error');
         }
         return redirect()->route('users.index')->with($notif);
 
     //     if ($this->repo->saveUser($request, $id)) {
-    //         $notif = $this->repo->getPesan('update'); 
-    //         return redirect()->route('users.index')->with($notif); 
+    //         $notif = $this->repo->getPesan('update');
+    //         return redirect()->route('users.index')->with($notif);
     //    } else {
     //         $notif = $this->repo->getPesan('error');
-    //         return redirect()->route('users.edit', $id)->with($notif); 
-    //    } 
+    //         return redirect()->route('users.edit', $id)->with($notif);
+    //    }
     }
 
     /**
@@ -126,13 +126,13 @@ class UsersController extends BackendController
      */
     public function destroy(UserDestroyRequest $request, $id)
     {
-        if(!empty($id)) {
-            if($this->repo->delete($id)) {
+        if (!empty($id)) {
+            if ($this->repo->delete($id)) {
                 $notif = $this->repo->getPesan('delete');
             } else {
                 $notif = $this->repo->getPesan('error');
             }
-        } 
+        }
 
         return redirect()->route('users.index')->with($notif);
     }

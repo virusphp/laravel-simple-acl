@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers\b;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\b\BackendController;
 use App\Http\Requests\CategoryRequest;
@@ -22,7 +23,7 @@ class CategoriesController extends BackendController
     {
         $categories = $this->repo->getCategory($req);
         $categoryCount = $this->repo->categoryCount();
-        return view('b.categories.index', compact('categories','categoryCount'));
+        return view('b.categories.index', compact('categories', 'categoryCount'));
     }
     /**
      * Show the form for creating a new resource.
@@ -32,7 +33,7 @@ class CategoriesController extends BackendController
     public function create()
     {
         $category = $this->repo->category();
-        return view('b.categories.create',compact('category'));
+        return view('b.categories.create', compact('category'));
     }
     /**
      * Store a newly created resource in storage.
@@ -42,13 +43,13 @@ class CategoriesController extends BackendController
      */
     public function store(CategoryRequest $request)
     {
-       if ($this->repo->saveCategory($request)) {
-            $notif = $this->repo->getPesan('create'); 
-            return redirect()->route('categories.index')->with($notif); 
-       } else {
+        if ($this->repo->saveCategory($request)) {
+            $notif = $this->repo->getPesan('create');
+            return redirect()->route('categories.index')->with($notif);
+        } else {
             $notif = $this->repo->getPesan('error');
-            return redirect()->route('categories.create')->with($notif); 
-       }
+            return redirect()->route('categories.create')->with($notif);
+        }
     }
     /**
      * Display the specified resource.
@@ -85,12 +86,12 @@ class CategoriesController extends BackendController
     public function update(CategoryRequest $request, $id)
     {
         if ($this->repo->saveCategory($request, $id)) {
-            $notif = $this->repo->getPesan('update'); 
-            return redirect()->route('categories.index')->with($notif); 
-       } else {
+            $notif = $this->repo->getPesan('update');
+            return redirect()->route('categories.index')->with($notif);
+        } else {
             $notif = $this->repo->getPesan('error');
-            return redirect()->route('categories.edit', $id)->with($notif); 
-       } 
+            return redirect()->route('categories.edit', $id)->with($notif);
+        }
     }
     /**
      * Remove the specified resource from storage.
@@ -100,13 +101,13 @@ class CategoriesController extends BackendController
      */
     public function destroy(CategoryDestroyRequest $request, $id)
     {
-        if(!empty($id)) {
-            if($this->repo->delete($id)) {
+        if (!empty($id)) {
+            if ($this->repo->delete($id)) {
                 $notif = $this->repo->getPesan('delete');
             } else {
                 $notif = $this->repo->getPesan('error');
             }
-        } 
+        }
         return redirect()->route('categories.index')->with($notif);
     }
 }

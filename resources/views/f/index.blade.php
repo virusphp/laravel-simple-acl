@@ -106,3 +106,6 @@
 </div>
 @include('f.iklans.iklanwebkanan')
 @endsection
+@push('scripts')
+<script src="{{ asset('f/js/sleekslider.min.js') }}"></script>
+@endpush
