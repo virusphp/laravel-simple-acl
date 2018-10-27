@@ -46,5 +46,5 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'b', 'prefix' => 'b'], fu
 Route::group(['namespace' => 'f'], function () {
     Route::get('sitemap.xml', 'SitemapController@sitemap');
     Route::get('sitemap/posts.xml', 'SitemapController@posts');
-    Route::get('sitemap/kategori.xml', 'SitemapController@categories');
+    Route::get('sitemap/category.xml', 'SitemapController@categories');
 });

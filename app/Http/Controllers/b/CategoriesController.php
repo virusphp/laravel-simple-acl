@@ -69,7 +69,7 @@ class CategoriesController extends BackendController
      */
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
+        $category = \App\Category::findOrFail($id);
         if (!is_null($category)) {
             return view('b.categories.edit', compact('category'));
         } else {
