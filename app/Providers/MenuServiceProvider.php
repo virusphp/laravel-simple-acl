@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Category;
 use App\Post;
+use App\Slider;
 
 class MenuServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,11 @@ class MenuServiceProvider extends ServiceProvider
         view()->composer('f.widgets.populer', function($view){
             $populer = Post::with('user')->latest()->populer()->paginate(5);
         return $view->with('populer', $populer);
+        });
+
+        view()->composer('f.widgets.sliders', function($view){
+            $sliders = Slider::all();
+        return $view->with('sliders', $sliders);
         });
     }
 

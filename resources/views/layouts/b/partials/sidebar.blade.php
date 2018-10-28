@@ -35,6 +35,7 @@
             </ul>
           </li>
           <li><a href="{{ route('blogs.sampah') }}"><i class="fa fa-trash"></i> Tong Sampah </a></li>
+          <li><a href="{{ route('sliders.index') }}"><i class="fa fa-image"></i> Slider </a></li>
           <!-- End Maintenance -->
           @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('admin'))
           <li><a><i class="fa fa-group"></i> Management User <span class="fa fa-chevron-down"></span></a>

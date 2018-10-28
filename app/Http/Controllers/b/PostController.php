@@ -48,6 +48,11 @@ class PostController extends BackendController
 
         $data = $this->handleRequest($request);
         $newPost = Post::create($data);
+        Session::flash('flash_notification', [
+            'level'=>'info',
+            'message'=>'<h4><i class="icon fa fa-check"></i> Berhasil !</h4> Post '.$newPost->title.' telah di Buat.'
+        ]);
+
         return redirect(route('blogs.index'));
     }
 

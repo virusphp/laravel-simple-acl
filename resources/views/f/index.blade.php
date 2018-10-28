@@ -1,6 +1,12 @@
 @extends('layouts.f.master')
 @section('title', '-')
 @push('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('f/css/demo.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('f/css/style2.css') }}" />
+<link href='http://fonts.googleapis.com/css?family=Economica:700,400italic' rel='stylesheet' type='text/css'>
+<noscript>
+    <link rel="stylesheet" type="text/css" href="{{ asset('f/css/nojs.css')}}" />
+</noscript>
 @endpush
 @section('iklanwebkiri')
 @include('f.iklans.iklanwebkiri')
@@ -107,5 +113,16 @@
 @include('f.iklans.iklanwebkanan')
 @endsection
 @push('scripts')
-<script src="{{ asset('f/js/sleekslider.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('f/js/modernizr.custom.28468.js')}}"></script>
+<script type="text/javascript" src="{{ asset('f/js/jquery.cslider.js') }}"></script>
+<script type="text/javascript">
+    $(function() {
+
+        $('#da-slider').cslider({
+            autoplay	: true,
+            bgincrement	: 450
+        });
+
+    });
+</script>
 @endpush
