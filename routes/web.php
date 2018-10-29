@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'b', 'prefix' => 'b'], fu
     Route::get('home', 'HomeController@index')->name('home');
     Route::resource('users', 'UserController');
     Route::resource('sliders', 'SliderController');
+    Route::get('users/confirm/{users}', 'UserController@confirm')->name('users.confirm');
     Route::get('users/ganti-password/{id}', 'UserController@password')->name('users.password');
     Route::put('users/ganti-password/post/{id}', 'UserController@gantiPassword')->name('ganti.password');
     Route::get('blogs/tong-sampah', 'PostController@tongSampah')->name('blogs.sampah');

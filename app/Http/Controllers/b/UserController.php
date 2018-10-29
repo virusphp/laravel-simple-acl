@@ -105,6 +105,13 @@ class UserController extends BackendController
         return redirect(route('users.index'));
     }
 
+    public function confirm($id)
+    {
+        $user = User::findOrFail($id);
+        $users = User::where('id','!=', $user->id)->pluck('name', 'id');
+        return view('b.users.confirm', compact('user', 'users'));
+    }
+
     public function password($id)
     {
         $password = User::findOrFail($id);

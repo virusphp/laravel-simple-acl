@@ -149,7 +149,7 @@ class SliderController extends Controller
 			$destination = $this->uploadPath;
 
 			$successUpload = Image::make($image->getRealPath())
-				->resize(1000, 400)->save($destination . "/" . $fileName);
+				->resize(800, 350)->save($destination . "/" . $fileName);
 
 			if ($successUpload)
 			{

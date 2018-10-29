@@ -17,23 +17,21 @@
         <td>{{ $user->email }}</td>
         <td><span class="label label-success">{{ $user->roles->first()->name }}</span></td>
         <td>
-            {!! Form::open(['route' => ['users.destroy',$user->id], 'method' => 'DELETE']) !!}
-                <a href="{{ route ('users.edit',$user->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit User">
-                    <i class="fa fa-pencil"></i>
+            <a href="{{ route ('users.edit',$user->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit User">
+                <i class="fa fa-pencil"></i>
+            </a>
+            <a href="{{ route ('users.password',$user->id) }}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Ganti Password">
+                <i class="fa fa-key"></i>
+            </a>
+            @if($user->id == config('cms.default_user_id'))
+                <button type="submit" class="btn btn-xs btn-danger" onclick="return false" disabled>
+                    <i class="fa fa-trash-o"></i>
+                </button>
+            @else
+                <a href="{{ route('users.confirm', $user->id) }}" class="btn btn-xs btn-danger" onclick="return confirm('Apakah kamu yakin ingin Menghapus data ini')" >
+                    <i class="fa fa-trash-o"></i>
                 </a>
-                <a href="{{ route ('users.password',$user->id) }}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Ganti Password">
-                    <i class="fa fa-key"></i>
-                </a>
-                @if($user->id == config('cms.default_user_id'))
-                    <button type="submit" class="btn btn-xs btn-danger" onclick="return false" disabled>
-                        <i class="fa fa-trash-o"></i>
-                    </button>
-                @else
-                    <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah kamu yakin ingin Menghapus data ini')" >
-                        <i class="fa fa-trash-o"></i>
-                    </button>
-                @endif
-            {!! Form::close() !!}
+            @endif
         </td>
         </tr>
     </tbody>
