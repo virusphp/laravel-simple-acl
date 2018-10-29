@@ -7,5 +7,5 @@ use App\Http\Controllers\Controller;
 
 class FrontendController extends Controller
 {
-    protected $limit = 10;
+    protected $limit = 2;
 }

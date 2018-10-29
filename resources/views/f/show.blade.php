@@ -1,6 +1,13 @@
 @extends('layouts.f.master')
 @section('title', $post->title)
 @push('css')
+<meta property="og:url"                content="{{ url()->full()}}" />
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="{{ $post->title }}" />
+<meta property="og:description"        content="{!! $post->body !!}" />
+<meta property="og:image"              content="{{ $post->ImageUrl }}" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta name="twitter:description" content="{!! $post->body !!}">
 @endpush
 @section('iklanwebkiri')
 @include('f.iklans.iklanwebkiri')
@@ -28,15 +35,15 @@
           <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-8 float-left sosial-media">
               <a href="#"><b>BAGIKAN KE :</b></a>
-              <a href="https://twitter.com">
+              <a href="https://twitter.com/intent/tweet?url={{ url()->full()}}">
                 <i class="fab fa-twitter"></i>
               </a>
-              <a href="https://facebook.com">
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->full()}}">
                 <i class="fab fa-facebook"></i>
               </a>
-              <a href="https://instagram.com">
+              {{-- <a href="https://instagram.com">
                 <i class="fab fa-instagram"></i>
-              </a>
+              </a> --}}
               <a href="whatsapp://send?text={{ url()->full()}}" data-action="share/whatsapp/share">
                 <i class="fab fa-whatsapp"></i>
               </a>
@@ -57,6 +64,22 @@
 
           </script>
         </nav>
+        <div class="row">
+                @foreach($postlatest as $ter)
+                <div class="col-md-6 col-sm-6 py-4">
+                  <div class="box">
+                    <img src="{{ $ter->ImageThumbUrl }}" alt="{{ $ter->slug }}">
+                    <div class="box-content">
+                      <p class="description">
+                        {!! $ter->title !!}
+                      </p>
+                      <hr>
+                      <a href="{{ route('show.post', $ter->slug) }}" class="read-more">selengkapnya</a>
+                    </div>
+                  </div>
+                </div>
+                @endforeach
+              </div>
       </div>
       <!-- widgets -->
       <aside class="col-md-4 blog-sidebar">

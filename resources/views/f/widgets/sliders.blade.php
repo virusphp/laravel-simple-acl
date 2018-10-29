@@ -3,7 +3,10 @@
     <div class="da-slide">
         {{-- <h2>Easy management</h2> --}}
         <p>{{ $slider->content }}</p>
-        <a href="#" class="da-link">Selengkapnya </a>
+        @if($slider->link != "")
+        <a href="{{ $slider->link }}" class="da-link">Selengkapnya </a>
+        @else
+        @endif
         <div class="img-slide"><img src="{{ $slider->ImageSlider }}" alt="{{ $slider->content }}" /></div>
     </div>
     @endforeach

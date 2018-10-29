@@ -112,4 +112,9 @@ class Post extends Model
     {
         return Carbon::parse($this->attributes['published_at'])->format('d-M-Y');
     }
+
+    public function scopePopular($query)
+	{
+		return $query->orderBy('view_count', 'desc');
+	}
 }

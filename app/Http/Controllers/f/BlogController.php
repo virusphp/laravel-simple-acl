@@ -12,15 +12,16 @@ class BlogController extends FrontendController
 {
     public function index()
     {
-        $sliderblog = Post::with('user')->latest()->published()->paginate(9);
-        $bloglatest = Post::with('user')->published()->paginate($this->limit);
+        $sliderblog = Post::with('user')->popular()->published()->paginate(9);
+        $bloglatest = Post::with('user')->latest()->published()->paginate($this->limit);
         return view('f.index', compact('sliderblog', 'bloglatest'));
     }
 
     public function show(Post $post)
     {
         $post->increment('view_count');
-        return view("f.show", compact('post'));
+        $postlatest = Post::with('user')->latest()->published()->paginate($this->limit);
+        return view("f.show", compact('post', 'postlatest'));
     }
 
     public function category(Category $category)
