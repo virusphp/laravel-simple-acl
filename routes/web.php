@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'b', 'prefix' => 'b'], fu
     Route::get('blogs/restore/{id}', 'PostController@restore')->name('blogs.restore');
     Route::get('blogs/forceDestroy/{forceDestroy}', 'PostController@forceDestroy')->name('blogs.forceDestroy');
     Route::resource('categories', 'CategoriesController');
-    Route::post('categories/save', 'CategoriesController@saveCategory')->name('categories.saveCategory');
+    Route::post('categories/save', 'PostController@saveCategory')->name('categories.saveCategory');
     Route::resource('blogs', 'PostController');
     Route::get('blogs?{filter}', 'PostController@index')->name('blogs.filter');
     Route::get('blogs/publish/{id}', 'PostController@publish')->name('blogs.publish');
@@ -47,5 +47,5 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'b', 'prefix' => 'b'], fu
 Route::group(['namespace' => 'f'], function () {
     Route::get('sitemap.xml', 'SitemapController@sitemap');
     Route::get('sitemap/posts.xml', 'SitemapController@posts');
-    Route::get('sitemap/kategori.xml', 'SitemapController@categories');
+    Route::get('sitemap/category.xml', 'SitemapController@categories');
 });

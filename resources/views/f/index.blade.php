@@ -70,7 +70,7 @@
                     <img src="{{ $bl->ImageThumbUrl }}" class="img-post-right img-fluid" alt="{{ $bl->slug }}">
                   </figure>
                 </div>
-                <div class="col-sm-6 col-md-8">
+                <div class="col-sm-6 text-left col-md-8">
                   <h5 class="py-1">{{ $bl->TitlePost }}</h5>
                   {!! $bl->BodyPost !!}
                   <hr>

@@ -187,4 +187,9 @@ class PostController extends BackendController
 
         return $posts;
     }
+
+    public function saveCategory(Request $request)
+	{
+		return Category::create($request->all());
+	}
 }

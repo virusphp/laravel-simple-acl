@@ -3,8 +3,8 @@
   @foreach($populer as $po)
   <div class="media text-muted pt-3">
     <img class="mr-2 rounded img-fluid" style="width:120px; height:100px;" src="{{ $po->ImageThumbUrl }}" alt="{{ $po->slug }}">
-    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-      <strong class="d-block text-gray-dark">{{ $po->category->name }}</strong>{{ $po->title }}<br>
+    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray text-left">
+      <strong class="d-block text-gray-dark ">{{ $po->category->name }}</strong>{{ $po->title }}<br>
         <a href="{{ route('show.post', $po->slug) }}"><strong>Read More</strong></a>
     </p>
   </div>

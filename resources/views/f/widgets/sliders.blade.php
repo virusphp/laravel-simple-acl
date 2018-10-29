@@ -4,7 +4,7 @@
         {{-- <h2>Easy management</h2> --}}
         <p>{{ $slider->content }}</p>
         <a href="#" class="da-link">Selengkapnya </a>
-        <div class="img-slide"><img src="{{ $slider->ImageSlider }}" alt="image01" /></div>
+        <div class="img-slide"><img src="{{ $slider->ImageSlider }}" alt="{{ $slider->content }}" /></div>
     </div>
     @endforeach
     <nav class="da-arrows">
