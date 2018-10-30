@@ -14,6 +14,7 @@
   <meta name="twitter:site" content="@pekalonganinfo" />
   <meta name="twitter:site:id" content="@pekalonganinfo" />
   <meta name="twitter:creator" content="@pekalonganinfo" />
+  @stack('css')
   <link rel="icon" href="{{ asset('img/favicon.png') }}">
   <title>pekalonganinfo - @yield('title')</title>
   <link href="{{ asset('f/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -21,7 +22,7 @@
   <link href="{{ asset('f/css/style.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('f/css/animate.css') }}">
   <link rel="stylesheet" href="{{ asset('f/fontawesome/css/all.min.css') }}">
-  @stack('css')
+
 </head>
 <body>
   <div class="container-fluid">

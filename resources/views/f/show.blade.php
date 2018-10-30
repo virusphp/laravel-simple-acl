@@ -1,13 +1,13 @@
 @extends('layouts.f.master')
 @section('title', $post->title)
 @push('css')
-<meta property="og:url"                content="{{ url()->full()}}" />
-<meta property="og:type"               content="article" />
-<meta property="og:title"              content="{{ $post->title }}" />
-<meta property="og:description"        content="{!! $post->body !!}" />
-<meta property="og:image"              content="{{ $post->ImageUrl }}" />
+<meta property="og:url"  content="{{ url()->full()}}" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ $post->title }}" />
+<meta property="og:description" content="{{ $post->BodyPost }}" />
+<meta property="og:image" content="{{ $post->ImageUrl }}" />
 <meta property="og:image:type" content="image/jpeg" />
-<meta name="twitter:description" content="{!! $post->body !!}">
+<meta name="twitter:description" content="{{ $post->BodyPost }}">
 @endpush
 @section('iklanwebkiri')
 @include('f.iklans.iklanwebkiri')
