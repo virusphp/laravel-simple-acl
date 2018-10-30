@@ -287,7 +287,7 @@ $config = array(
 	// WATERMARK IMAGE
 	//
 	//Watermark path or false
-	'image_watermark'                          => 'http://pekalonganinfo.test/img/watermark.png',
+	'image_watermark'                          => 'https://pekalonganinfo.test/img/watermark.png',
 	# Could be a pre-determined position such as:
 	#           tl = top left,
 	#           t  = top (middle),
