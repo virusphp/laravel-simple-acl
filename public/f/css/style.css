@@ -605,6 +605,7 @@ background: #707070;
     left: 0;
     transition: all 0.3s ease 0s;
 }
+
 .box:hover img{
     left: 100%;
     transform: scale(0.7) rotateZ(180deg);

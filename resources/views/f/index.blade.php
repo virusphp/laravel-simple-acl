@@ -16,7 +16,7 @@
 <div class="container">
   <div class="row slider-post">
     @foreach($sliderblog as $sl)
-    <div class="col-md-4 col-sm-6">
+    <div class="col-md-4 col-sm-12">
       <div class="box">
         <img src="{{ $sl->ImageThumbUrl }}" alt="{{ $sl->slug }}">
         <div class="box-content">
@@ -117,12 +117,12 @@
       responsive: [{
         breakpoint: 768,
         settings: {
-          slidesToShow: 4
+          slidesToShow: 2
         }
       }, {
         breakpoint: 520,
         settings: {
-          slidesToShow: 3
+          slidesToShow: 1
         }
       }]
     });
