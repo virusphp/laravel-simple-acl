@@ -34,7 +34,7 @@ class MenuServiceProvider extends ServiceProvider
         });
 
         view()->composer('f.widgets.sliders', function($view){
-            $sliders = Slider::all();
+            $sliders = Slider::startAt()->finishAt()->get();
         return $view->with('sliders', $sliders);
         });
     }

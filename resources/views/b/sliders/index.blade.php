@@ -25,6 +25,10 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <p>
         <a href="{{ route('sliders.create') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button></a>
+        <a href="{{ route('sliders.filter', 'filter=expired') }}"><button class="btn btn-danger btn-sm pull-right">Exipired</button></a>
+        <a href="{{ route('sliders.filter', 'filter=publish') }}"><button class="btn btn-success btn-sm pull-right">Publish</button></a>
+        <a href="{{ route('sliders.filter', 'filter=schedule') }}"><button class="btn btn-primary btn-sm pull-right">Schedule</button></a>
+        <a href="{{ route('sliders.filter', 'filter=draft') }}"><button class="btn btn-warning btn-sm pull-right">Draft</button></a>
       </p>
     </div>
   <div class="clearfix"></div>

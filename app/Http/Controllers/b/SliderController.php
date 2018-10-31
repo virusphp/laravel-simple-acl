@@ -21,10 +21,15 @@ class SliderController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $sliders = Slider::latest()->paginate(10);
-        $slidersCount = count($sliders);
+        if(is_Null($request->filter)){
+            $sliders = Slider::latest()->paginate(10);
+            $slidersCount = count($sliders);
+        }else{
+            $sliders = $this->filterSlider($request);
+            $slidersCount = count($sliders);
+        }
         return view('b.sliders.index', compact('sliders', 'slidersCount'));
     }
 
@@ -163,5 +168,20 @@ class SliderController extends Controller
 		}
 
         return $data;
+    }
+
+    public function filterSlider($request)
+    {
+        if ($request->filter == 'publish') {
+            $sliders  = Slider::startAt()->finishAt()->paginate(10);
+        } elseif($request->filter == 'schedule') {
+            $sliders  = Slider::schedule()->paginate(10);
+        }elseif($request->filter == 'expired'){
+            $sliders  = Slider::expired()->paginate(10);
+        }else{
+            $sliders  = Slider::draft()->paginate(10);
+        }
+
+        return $sliders;
     }
 }

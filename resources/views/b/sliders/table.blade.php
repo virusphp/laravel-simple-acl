@@ -5,6 +5,7 @@
         <th>Content</th>
         <th>Image</th>
         <th>Link</th>
+        <th>Status</th>
         <th>Action</th>
         </tr>
     </thead>
@@ -13,9 +14,10 @@
     <tbody>
         <tr>
         <td scope="row">{{ $no++ }}</td>
-        <td>{{ $slider->content }}</td>
+        <td>{{ $slider->ContentSlider }}</td>
         <td><img src="{{ $slider->ImageThumb }}" class="img-fluid" alt="{{ $slider->content }}" width="150"></td>
         <td><span class="label label-success">{{ $slider->link }}</span></td>
+        <td data-toggle="tooltip" data-placement="top" @if($slider->start_at != "") title="Publish : {{ tanggalIndo($slider->start_at) }} {{ $slider->WaktuStart }}  Expired : {{ tanggalIndo($slider->finish_at) }} {{ $slider->WaktuFinish }} @endif">{!! $slider->publicationLabel() !!}</td>
         <td>
                 {!! Form::open(['route' => ['sliders.destroy', $slider->id], 'method' => 'DELETE']) !!}
                 <a href="{{ route ('sliders.edit',$slider->id) }}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">

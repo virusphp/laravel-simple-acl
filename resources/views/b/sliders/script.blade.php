@@ -17,5 +17,15 @@ $('#image').on('change', function(e) {
         reader.readAsDataURL(file.files[0]);
     }
 });
+$("#datetimepicker1").datetimepicker({
+    format: "YYYY-MM-DD HH:mm:ss",
+    showClear: true
+});
+
+$("#datetimepicker2").datetimepicker({
+    format: "YYYY-MM-DD HH:mm:ss",
+    showClear: true
+});
+
 </script>
 @endpush
