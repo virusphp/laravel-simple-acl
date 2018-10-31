@@ -14,6 +14,7 @@
   <meta name="twitter:site" content="@pekalonganinfo" />
   <meta name="twitter:site:id" content="@pekalonganinfo" />
   <meta name="twitter:creator" content="@pekalonganinfo" />
+  <link rel="manifest" href="{{ asset('f/js/OneSignal/manifest.json')}}" />
   @stack('css')
   <link rel="icon" href="{{ asset('img/favicon.png') }}">
   <title>pekalonganinfo - @yield('title')</title>
@@ -36,13 +37,23 @@
        @yield('content')
     </div>
   </div>
-
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
   <script src="{{ asset('f/js/jquery-3.3.1.min.js')}} "></script>
   <script src="{{ asset('f/js/popper.min.js')}} "></script>
   <script src="{{ asset('f/js/bootstrap.min.js')}} "></script>
+  <script src="{{ asset('f/js/OneSignal/OneSignalSDKUpdaterWorker.js')}} "></script>
+  <script src="{{ asset('f/js/OneSignal/OneSignalSDKWorker.js')}} "></script>
   <script src="{{ asset('f/js/pekalonganinfo.js')}} "></script>
   <script src="{{ asset('b/js/jquery.validate.min.js') }}"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+      OneSignal.init({
+        appId: "7fbe2d0d-6194-457a-abee-dd4c782be3f2",
+      });
+    });
+  </script>
   @stack('scripts')
 </body>
 </html>
