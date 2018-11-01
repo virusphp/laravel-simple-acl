@@ -4,6 +4,7 @@ namespace App\Http\Controllers\b;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserDestroyRequest;
 use App\Http\Requests\UserRequest;
 use App\User;
 use App\Role;
@@ -17,7 +18,7 @@ class UserController extends BackendController
      */
     public function index()
     {
-        $users = User::orderBy('name', 'asc')
+        $users = User::with('posts')->orderBy('name', 'asc')
             ->whereNotBetween('id', [1, 2])
             ->paginate($this->limit);
         $userCount = User::count();
@@ -98,11 +99,24 @@ class UserController extends BackendController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(UserDestroyRequest $request, $id)
     {
-        $delete = User::findOrFail($id);
-        $delete->delete();
-        return redirect(route('users.index'));
+        $user = User::findOrFail($id);
+
+        $delOption = $request->delete_option;
+        $selectUser = $request->selected_user;
+
+        if ($delOption == "delete") {
+            // hapus tulisan
+            $user->posts()->withTrashed()->forceDelete();
+            $notif = $this->notif('success_delete');
+            // hapus userk
+        } else if($delOption == "attribute") {
+            $user->posts()->update(['user_id' => $selectUser]);
+            $notif = $this->notif('success_attribute');
+        }
+        $user->delete();
+        return redirect(route('users.index'))->with($notif);
     }
 
     public function confirm($id)
@@ -126,6 +140,20 @@ class UserController extends BackendController
         $data['password'] = bcrypt($request->password);
         $password->update($data);
         return redirect(route('users.index'));
+    }
 
+    public function notif($nilai)
+    {
+        if ($nilai == 'success_delete') {
+            return [
+                'alert-type' => 'warning',
+                'message' => 'Konten dan user di hapus semua' 
+            ];
+        } else {
+            return [
+                'alert-type' => 'warning',
+                'message' => 'Konten telah di pindahkan ke user terpilih' 
+            ];
+        }
     }
 }

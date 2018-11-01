@@ -13,7 +13,18 @@ class UserDestroyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return !($this->route('user') == config('cms.default_user_id') || 
+                    $this->route('user') == Auth::user()->id);
+    }
+
+    public function forbiddenResponse()
+    {
+        $notif = [
+            'alert-type' => 'warning',
+            'message' => 'Tidak di perbolehkan menghapus User Default!!'
+        ];
+
+        return redirect()->back()->with($notif);
     }
 
     /**

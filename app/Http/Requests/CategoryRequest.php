@@ -31,7 +31,8 @@ class CategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'      => 'Nama Kategori Dilarang Kosong'
+            'name.required'      => 'Nama Kategori Dilarang Kosong',
+            'name.unique'   => 'Nama sudah di gunakan!!'
         ];
     }
 }

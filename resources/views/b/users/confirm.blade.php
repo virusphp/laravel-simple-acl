@@ -24,26 +24,29 @@
                   </div>
                   <div class="x_content">
                   <br />
-                        {!! Form::open([
-                            'route'=> ['categories.store'], 
+                        {!! Form::model($user,[
+                            'method' => 'DELETE',
+                            'route'=> ['users.destroy', $user->id], 
                             'class'=> 'form-horizontal form-label-left'
                         ]) !!}
                     
                         <div class="col-xs-9">
-                            <div class="box">
-                                <div class="box-body">
-                                    <p>DI sini tempat penghapusan teori</p> 
-                                    <p>ID #{{ $user->id }} {{ $user->nama }}</p>
-                                    <p>Apa kamu ingin memindahkan kontent pada user ini!!</p>
-                                    <p>
-                                      <input type="radio" name="delete_option" value="delete"> Deleted All Content
-                                    </p>
-                                    <p>
-                                      <input type="radio" name="delete_option" value="attribute"> Attribute content to user: 
-                                      {!! Form::select('akun_user', $users, null)  !!}
-                                    </p>
-                                </div> 
-                            </div>
+                          <div class="box-body">
+                              <p>DI sini tempat penghapusan teori</p> 
+                              <p>ID #{{ $user->id }} {{ $user->nama }}</p>
+                              <p>Apa kamu ingin memindahkan kontent pada user ini!!</p>
+                              <p>
+                                <input type="radio" name="delete_option" value="delete" checked> Hapus Semua Kontent
+                              </p>
+                              <p>
+                                <input type="radio" name="delete_option" value="attribute"> Pindahkan kontent pada master: 
+                                {!! Form::select('selected_user', $users, null)  !!}
+                              </p>
+                          </div> 
+                          <div class="box-footer">
+                            <button type="submit" class="btn btn-danger">Confirm Delete</button> 
+                            <a href="{{ route('users.index') }}" class="btn btn-default">Cencel</a>
+                          </div>
                         </div>
 
                       {!! Form::close() !!}
