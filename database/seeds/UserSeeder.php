@@ -11,14 +11,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // Add a permission to a role
-        $role = App\Role::where('name', 'admin')->first();
-        $role->addPermission('access.backend');
-        $role->addPermission('create.user');
-        $role->addPermission('edit.user');
-        $role->addPermission('delete.user');
-        // ... Add other role permission if necessary
-
         // Create a user, and give roles
         $user = App\User::create([
             'name' => 'Developer',
@@ -27,6 +19,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password123$$'),
         ]);
 
+        $user->revokeRole('developer');
         $user->assignRole('developer');
 
         // Create a user, and give roles
@@ -37,6 +30,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('pekalonganinfo123$$'),
         ]);
 
+        $user->revokeRole('admin');
         $user1->assignRole('admin');
 
     }

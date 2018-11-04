@@ -11,24 +11,14 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('roles')->truncate();
         // Basic roles data
         App\Role::insert([
             ['name' => 'developer'],
             ['name' => 'admin'],
             ['name' => 'author'],
-            ['name' => 'editor'],
-            ['name' => 'creator'],
+            ['name' => 'editor']
         ]);
 
-        // Basic permissions data
-        App\Permission::insert([
-            ['name' => 'access.backend'],
-            ['name' => 'create.user'],
-            ['name' => 'edit.user'],
-            ['name' => 'delete.user'],
-            ['name' => 'create.article'],
-            ['name' => 'edit.article'],
-            ['name' => 'delete.article'],
-        ]);
     }
 }
