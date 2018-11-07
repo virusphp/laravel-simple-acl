@@ -47,7 +47,7 @@ class AdminAssignPermissionGenerate extends Command
         $roleAdmin->save();
 
         if ($roleAdmin) {
-            $user = User::find(4);
+            $user = User::find(2);
             $user->revokeRole($roleAdmin->name);
             $user->assignRole($roleAdmin->name);
 
