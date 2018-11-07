@@ -52,7 +52,7 @@ class AuthorAssignPermissionGenerate extends Command
             $user->assignRole($roleAuthor->name);
 
             $permissions = [];
-            foreach (config('author') as $module) {
+            foreach (config("author") as $module) {
                 foreach ($module['permissions'] as $permission) {
                     $permissions[] = $permission. "-". $module['route'];
                 }

@@ -52,7 +52,7 @@ class DevelopAssignPermissionGenerate extends Command
             $user->assignRole($roleDeveloper->name);
 
             $permissions = [];
-            foreach (config('developer') as $module) {
+            foreach (config("developer") as $module) {
                 foreach ($module['permissions'] as $permission) {
                     $permissions[] = $permission. "-". $module['route'];
                 }

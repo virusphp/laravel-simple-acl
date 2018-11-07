@@ -47,12 +47,12 @@ class AdminAssignPermissionGenerate extends Command
         $roleAdmin->save();
 
         if ($roleAdmin) {
-            $user = User::find(2);
+            $user = User::find(4);
             $user->revokeRole($roleAdmin->name);
             $user->assignRole($roleAdmin->name);
 
             $permissions = [];
-            foreach (config('admin') as $module) {
+            foreach (config("admin") as $module) {
                 foreach ($module['permissions'] as $permission) {
                     $permissions[] = $permission. "-". $module['route'];
                 }
