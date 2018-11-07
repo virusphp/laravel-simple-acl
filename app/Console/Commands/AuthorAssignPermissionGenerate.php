@@ -7,14 +7,14 @@ use App\User;
 use App\Role;
 use App\Permission;
 
-class AdminAssignPermissionGenerate extends Command
+class AuthorAssignPermissionGenerate extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'admin:permission';
+    protected $signature = 'author:permission';
 
     /**
      * The console command description.
@@ -40,19 +40,19 @@ class AdminAssignPermissionGenerate extends Command
      */
     public function handle()
     {
-        $roleAdmin = Role::firstOrNew([
-            'name' => 'admin'
+        $roleAuthor = Role::firstOrNew([
+            'name' => 'author'
         ]);
 
-        $roleAdmin->save();
+        $roleAuthor->save();
 
-        if ($roleAdmin) {
-            $user = User::find(2);
-            $user->revokeRole($roleAdmin->name);
-            $user->assignRole($roleAdmin->name);
+        if ($roleAuthor) {
+            $user = User::where('id', 4)->first();
+            $user->revokeRole($roleAuthor->name);
+            $user->assignRole($roleAuthor->name);
 
             $permissions = [];
-            foreach (config('admin') as $module) {
+            foreach (config('author') as $module) {
                 foreach ($module['permissions'] as $permission) {
                     $permissions[] = $permission. "-". $module['route'];
                 }
@@ -67,9 +67,9 @@ class AdminAssignPermissionGenerate extends Command
                     $this->info($permission. ' Dibuat');
                 }
 
-                if (!$roleAdmin->hasPermission($permission)) {
-                    $roleAdmin->addPermission($permission);
-                    $this->info($permission. ' Dikatikan ke role admin');
+                if (!$roleAuthor->hasPermission($permission)) {
+                    $roleAuthor->addPermission($permission);
+                    $this->info($permission. ' Dikatikan ke role author');
                     $assigned += 1;
                 }
             }
@@ -77,7 +77,7 @@ class AdminAssignPermissionGenerate extends Command
             if ($assigned == 0) {
                 $this->comment('Tidak ada permission baru');
             } else {
-                $this->comment($assigned. ' Permission di kaitkan ke role admin');
+                $this->comment($assigned. ' Permission di kaitkan ke role author');
             }
         } else {
             $this->info('Role yang di masksud tidak ada');

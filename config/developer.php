@@ -19,14 +19,14 @@
 			'name' => 'Category',
 			'route' => 'category',
 			'permissions' => ['crud', 'update-other', 'delete-other'],
-			'parent' => 'Categoy'
+			'parent' => 'Categories'
 		],
 		# Slider Permission
 		[
 			'name' => 'Slider',
 			'route' => 'slider',
 			'permissions' => ['crud', 'update-other', 'delete-other'],
-			'parent' => 'Slide'
+			'parent' => 'Slider'
 		],
 		# User Permission
 		[

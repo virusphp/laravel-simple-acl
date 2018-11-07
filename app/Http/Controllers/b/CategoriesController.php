@@ -17,6 +17,7 @@ class CategoriesController extends BackendController
      */
     public function __construct()
     {
+        parent::__construct();
         $this->repo = new RepoCategory;
     }
     public function index(Request $req)

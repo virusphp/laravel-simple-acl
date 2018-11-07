@@ -30,19 +30,21 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'b', 'prefix' => 'b'], fu
     Route::get('home', 'HomeController@index')->name('home');
     Route::resource('users', 'UserController');
     Route::resource('sliders', 'SliderController');
+    Route::resource('categories', 'CategoriesController');
+    Route::post('categories/save', 'PostController@saveCategory')->name('categories.saveCategory');
+
+    Route::get('blogs/tong-sampah', 'PostController@tongSampah')->name('blogs.sampah');
+    Route::get('blogs/forceDestroy/{blog}', 'PostController@forceDestroy')->name('blogs.forceDestroy');
+    Route::resource('blogs', 'PostController');
+    Route::get('blogs/restore/{blog}', 'PostController@restore')->name('blogs.restore');
+    Route::get('blogs?{filter}', 'PostController@index')->name('blogs.filter');
+    Route::get('blogs/publish/{blog}', 'PostController@publish')->name('blogs.publish');
+
     Route::get('sliders?{filter}', 'SliderController@index')->name('sliders.filter');
     Route::get('users/confirm/{users}', 'UserController@confirm')->name('users.confirm');
     Route::get('users/ganti-password/{id}', 'UserController@password')->name('users.password');
     Route::put('users/ganti-password/post/{id}', 'UserController@gantiPassword')->name('ganti.password');
-    Route::get('blogs/tong-sampah', 'PostController@tongSampah')->name('blogs.sampah');
-    Route::get('blogs/restore/{id}', 'PostController@restore')->name('blogs.restore');
-    Route::get('blogs/forceDestroy/{forceDestroy}', 'PostController@forceDestroy')->name('blogs.forceDestroy');
-    Route::resource('categories', 'CategoriesController');
-    Route::post('categories/save', 'PostController@saveCategory')->name('categories.saveCategory');
-    Route::resource('blogs', 'PostController');
-    Route::get('blogs?{filter}', 'PostController@index')->name('blogs.filter');
-    Route::get('blogs/publish/{id}', 'PostController@publish')->name('blogs.publish');
-});
+    });
 
 //Sitemap
 

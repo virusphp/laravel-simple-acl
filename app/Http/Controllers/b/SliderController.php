@@ -11,12 +11,13 @@ use Intervention\Image\Facades\Image;
 use File;
 use Session;
 
-class SliderController extends Controller
+class SliderController extends BackendController
 {
     protected $uploadPath;
 
     public function __construct()
     {
+        parent::__construct();
         $this->uploadPath = config('cms.image.dir');
     }
 

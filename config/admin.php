@@ -11,7 +11,7 @@
 		[
 			'name' => 'Post',
 			'route' => 'post',
-			'permissions' => ['crud', 'update-other'],
+			'permissions' => ['crud', 'update-other', 'delete-other'],
 			'parent' => 'Post'
 		],
 		# Category Permission

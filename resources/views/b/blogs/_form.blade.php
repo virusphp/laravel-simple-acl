@@ -30,7 +30,7 @@
 		<div class="x_content">
 			<div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
 				<div class="pull-left">
-				  	{!! Form::select('category_id', App\Category::pluck('name', 'id'), null, ['placeholder' => 'Pilih Category', 'class' => 'form-control col-md-8 col-xs-12', 'required' => 'required', 'title' => 'Silahkan Pilih Category']) !!}
+				  	{!! Form::select('category_id', $category, null, ['placeholder' => 'Pilih Category', 'class' => 'form-control col-md-8 col-xs-12', 'required' => 'required', 'title' => 'Silahkan Pilih Category']) !!}
 					{!! $errors->first('category_id', '<p class="help-block"><b>:message</b></p>') !!}
 				</div>
 				<div class="pull-right">

@@ -48,8 +48,12 @@
                                       <th>Action</th>
                                   </tr>
                                 </thead>
-                                  <?php $no=1; ?>
-                                  @foreach($posts as $post)
+                                <?php 
+                                    $no=1; 
+                                    $request = request();
+                                ?>
+
+                                @foreach($posts as $post)
                                 <tbody>
                                   <tr>
                                       <td scope="row">{{ $no++ }}</td>
@@ -61,12 +65,25 @@
                                           {!! $post->publicationLabel() !!}
                                       </td>
                                       <td>
-                                          <a href="{{ route ('blogs.restore',$post->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Kembali Ke Post">
-                                              <i class="fa fa-reply"></i>
-                                          </a>
-                                          <a href="{{ route ('blogs.forceDestroy',$post->id) }}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus Permanent">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        @if(check_permission($request, "Post@restore", $post->id))
+                                            <a href="{{ route ('blogs.restore',$post->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Kembali Ke Post">
+                                                <i class="fa fa-reply"></i>
+                                            </a>
+                                        @else
+                                            <a href="#" class="btn btn-success btn-xs disabled" onclick="return false;" data-toggle="tooltip" data-placement="top" title="Kembali Ke Post">
+                                                <i class="fa fa-reply"></i>
+                                            </a>
+                                        @endif
+
+                                        @if(check_permission($request, "Post@forceDestroy", $post->id))
+                                            <a href="{{ route ('blogs.forceDestroy',$post->id) }}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus Permanent">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @else 
+                                            <a href="#" class="btn btn-danger btn-xs disabled" onclick="return false;" data-toggle="tooltip" data-placement="top" title="Hapus Permanent">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @endif
                                       </td>
                                   </tr>
                                 </tbody>

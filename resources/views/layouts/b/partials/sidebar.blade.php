@@ -26,7 +26,9 @@
         <h3>General</h3>
         <ul class="nav side-menu">
           <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home </a></li>
+          @if (check_permission(request(), "Categories@index"))
           <li><a href="{{ route('categories.index') }}"><i class="fa fa-list"></i> Category </a></li>
+          @endif
 		      <!-- Blogs Menu -->
           <li><a><i class="fa fa-building"></i> Post<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
@@ -35,9 +37,11 @@
             </ul>
           </li>
           <li><a href="{{ route('blogs.sampah') }}"><i class="fa fa-trash"></i> Tong Sampah </a></li>
+          @if (check_permission(request(), "Slider@index"))
           <li><a href="{{ route('sliders.index') }}"><i class="fa fa-image"></i> Slider </a></li>
+          @endif
           <!-- End Maintenance -->
-          @if(Auth::user()->hasRole('developer') || Auth::user()->hasRole('admin'))
+          @if (check_permission(request(), "User@index"))
           <li><a><i class="fa fa-group"></i> Management User <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{ route('users.index') }}"><i class="fa fa-user"></i> User</a></li>

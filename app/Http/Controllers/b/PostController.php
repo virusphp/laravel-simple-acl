@@ -39,7 +39,8 @@ class PostController extends BackendController
 
     public function create(Post $post)
     {
-        return view('b.blogs.create', compact('post'));
+        $category =  Category::pluck('name', 'id');
+        return view('b.blogs.create', compact('post','category'));
     }
 
 
